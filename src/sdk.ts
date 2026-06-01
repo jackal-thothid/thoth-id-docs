@@ -1,4 +1,4 @@
-import fetch from "cross-fetch";
+import axios from "axios";
 import { encode } from "bs58";
 import { z, ZodType } from "zod";
 import * as schemas from "./schemas";
@@ -25,11 +25,8 @@ export class ThothIdSDK {
     }
 
     try {
-      const response = await fetch(targetUrl);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch contract IDs: ${response.statusText}`);
-      }
-      this.contractIds = await response.json();
+      const response = await axios.get(targetUrl, { timeout: this.timeoutMs });
+      this.contractIds = response.data;
     } catch (error) {
       console.error("Error loading contract IDs:", error);
       throw error;
@@ -82,51 +79,40 @@ export class ThothIdSDK {
     const baseUrl = this.nodeUrl.endsWith('/') ? this.nodeUrl.slice(0,-1): this.nodeUrl;
     const url = `${baseUrl}?id=${encodeURIComponent(id)}&calls[]=${encodeURIComponent(callStr)}`;
 
-    const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-    let timer: any;
-    if (controller) {
-      timer = setTimeout(() => controller.abort(), this.timeoutMs);
-    }
-
+    let json: any;
     try {
-      const resp = await fetch(url, {
-        method: "GET",
-        signal: controller ? controller.signal : undefined
-      });
-
-      if (!resp.ok) {
-        const text = await resp.text().catch(() => "");
-        throw new Error(`Node responded ${resp.status} ${resp.statusText}: ${text}`);
-      }
-
-      const json = await resp.json();
-      const parsedResponse = schemas.ApiResponseSchema.safeParse(json);
-
-      if (!parsedResponse.success) {
-        throw new Error(`Failed to parse API response: ${parsedResponse.error.message}`);
-      }
-
-      const result = parsedResponse.data.calls[callStr];
-
-      if (result?.errmsg) {
-        throw new Error(`Nano contract error: ${result.errmsg}`);
-      }
-
-      const valueToParse = result?.value;
-      const validationResult = responseSchema.safeParse(valueToParse);
-
-      if (validationResult.success) {
-        return validationResult.data;
-      } else {
-        throw new Error(`Invalid response value for method ${methodName}: ${validationResult.error.message}`);
-      }
+      const resp = await axios.get(url, { timeout: this.timeoutMs });
+      json = resp.data;
     } catch (err: any) {
-      if (err.name === "AbortError") {
+      if (err.code === "ECONNABORTED") {
         throw new Error(`Request timed out after ${this.timeoutMs}ms`);
       }
+      if (err.response) {
+        const text = typeof err.response.data === "string" ? err.response.data : JSON.stringify(err.response.data);
+        throw new Error(`Node responded ${err.response.status} ${err.response.statusText}: ${text}`);
+      }
       throw err;
-    } finally {
-      if (timer) clearTimeout(timer);
+    }
+
+    const parsedResponse = schemas.ApiResponseSchema.safeParse(json);
+
+    if (!parsedResponse.success) {
+      throw new Error(`Failed to parse API response: ${parsedResponse.error.message}`);
+    }
+
+    const result = parsedResponse.data.calls[callStr];
+
+    if (result?.errmsg) {
+      throw new Error(`Nano contract error: ${result.errmsg}`);
+    }
+
+    const valueToParse = result?.value;
+    const validationResult = responseSchema.safeParse(valueToParse);
+
+    if (validationResult.success) {
+      return validationResult.data;
+    } else {
+      throw new Error(`Invalid response value for method ${methodName}: ${validationResult.error.message}`);
     }
   }
 
@@ -144,10 +130,18 @@ export class ThothIdSDK {
     throw new Error(`Could not determine contract ID for name "${name}". No contractId was provided and the suffix does not match a known contract.`);
   }
 
+  private _hexToBytes(hex: string): Uint8Array {
+    const bytes = new Uint8Array(hex.length / 2);
+    for (let i = 0; i < bytes.length; i++) {
+      bytes[i] = parseInt(hex.substring(i * 2, i * 2 + 2), 16);
+    }
+    return bytes;
+  }
+
   private _getB58Address(address: string): string {
-    if (typeof address === 'string' && /^[0-9a-fA-F]+$/.test(address)) {
-        const buffer = Buffer.from(address, 'hex');
-        return encode(buffer);
+    // Only convert valid, even-length hex strings; otherwise return as-is.
+    if (typeof address === 'string' && address.length % 2 === 0 && /^[0-9a-fA-F]+$/.test(address)) {
+        return encode(this._hexToBytes(address));
     }
     return address;
   }
@@ -311,12 +305,20 @@ export class ThothIdSDK {
     const queryParts = callStrings.map(cs => `calls[]=${encodeURIComponent(cs)}`);
     const url = `${urlBase}&${queryParts.join("&")}`;
 
-    const resp = await fetch(url, { method: "GET" });
-    if (!resp.ok) {
-      const txt = await resp.text().catch(() => "");
-      throw new Error(`Node error ${resp.status}: ${txt}`);
+    let json: any;
+    try {
+      const resp = await axios.get(url, { timeout: this.timeoutMs });
+      json = resp.data;
+    } catch (err: any) {
+      if (err.code === "ECONNABORTED") {
+        throw new Error(`Request timed out after ${this.timeoutMs}ms`);
+      }
+      if (err.response) {
+        const txt = typeof err.response.data === "string" ? err.response.data : JSON.stringify(err.response.data);
+        throw new Error(`Node error ${err.response.status}: ${txt}`);
+      }
+      throw err;
     }
-    const json = await resp.json();
 
     const parsedResponse = schemas.ApiResponseSchema.safeParse(json);
     if (!parsedResponse.success) {

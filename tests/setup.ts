@@ -1,7 +1,17 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import fetch from 'cross-fetch';
+import axios from 'axios';
+
+// --- Helper to build a readable message from an axios error ---
+function axios_error_text(error: any): string {
+    if (error.response) {
+        const data = error.response.data;
+        const text = typeof data === 'string' ? data : JSON.stringify(data);
+        return `${error.response.status} ${error.response.statusText} - ${text}`;
+    }
+    return error.message ?? String(error);
+}
 
 function get_max_attempts(): number {
     if(process.argv.length > 1)
@@ -36,21 +46,20 @@ function write_config(file_name: string, data: any) {
 
 async function get_wallet_history(wallet_id: string, headless_api_key: string, host: string, port: number) {
     const url = `http://${host}:${port}/wallet/tx-history/?limit=1`;
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': headless_api_key,
-            'x-wallet-id': wallet_id
-        }
-    });
-
-    if (!response.ok) {
-        const error_text = await response.text();
-        throw new Error(`Failed to get wallet history: ${response.status} ${response.statusText} - ${error_text}`);
+    let result;
+    try {
+        const response = await axios.get(url, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': headless_api_key,
+                'x-wallet-id': wallet_id
+            }
+        });
+        result = response.data;
+    } catch (error) {
+        throw new Error(`Failed to get wallet history: ${axios_error_text(error)}`);
     }
 
-    const result = await response.json();
     console.log('Wallet history retrieved successfully.');
     console.log(result);
     return result;
@@ -165,17 +174,14 @@ async function setup() {
 async function updateContractIdApi(key: string, value: string) {
     console.log(`\n--- Updating Contract ID API for ${key} ---`);
     const url = 'http://localhost:3232/contract-id';
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ key, value })
-    });
-
-    if (!response.ok) {
-        const error_text = await response.text();
-        throw new Error(`Failed to update contract ID API: ${response.status} ${response.statusText} - ${error_text}`);
+    try {
+        await axios.post(url, { key, value }, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+    } catch (error) {
+        throw new Error(`Failed to update contract ID API: ${axios_error_text(error)}`);
     }
 
     console.log(`Contract ID API updated successfully for ${key}.`);
@@ -196,24 +202,22 @@ async function start_master_wallet(config: any) {
     }
 
     const url = `http://${master_wallet_host}:${master_wallet_port}/start`;
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': headless_api_key
-        },
-        body: JSON.stringify({
+    let result;
+    try {
+        const response = await axios.post(url, {
             'wallet-id': master_id,
             'seedKey': master_seedkey
-        })
-    });
-
-    if (!response.ok) {
-        const error_text = await response.text();
-        throw new Error(`Failed to start master wallet: ${response.status} ${response.statusText} - ${error_text}`);
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': headless_api_key
+            }
+        });
+        result = response.data;
+    } catch (error) {
+        throw new Error(`Failed to start master wallet: ${axios_error_text(error)}`);
     }
 
-    const result = await response.json();
     console.log('Master wallet started successfully.');
     console.log(result);
     return result;
@@ -229,21 +233,20 @@ async function get_address_master(config: any) {
     } = config;
 
     const url = `http://${master_wallet_host}:${master_wallet_port}/wallet/address`;
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': headless_api_key,
-            'x-wallet-id': master_id
-        }
-    });
-
-    if (!response.ok) {
-        const error_text = await response.text();
-        throw new Error(`Failed to get master address: ${response.status} ${response.statusText} - ${error_text}`);
+    let result;
+    try {
+        const response = await axios.get(url, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': headless_api_key,
+                'x-wallet-id': master_id
+            }
+        });
+        result = response.data;
+    } catch (error) {
+        throw new Error(`Failed to get master address: ${axios_error_text(error)}`);
     }
 
-    const result = await response.json();
     console.log('Response from /wallet/address:', result);
 
     if (!result.address) {
@@ -286,22 +289,20 @@ async function create_nano_contract(env_config: any, address_master: string) {
         }
     };
 
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': headless_api_key,
-            'x-wallet-id': master_id
-        },
-        body: JSON.stringify(body)
-    });
-
-    if (!response.ok) {
-        const error_text = await response.text();
-        throw new Error(`Failed to create nano contract: ${response.status} ${response.statusText} - ${error_text}`);
+    let result;
+    try {
+        const response = await axios.post(url, body, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': headless_api_key,
+                'x-wallet-id': master_id
+            }
+        });
+        result = response.data;
+    } catch (error) {
+        throw new Error(`Failed to create nano contract: ${axios_error_text(error)}`);
     }
 
-    const result = await response.json();
     console.log('Nano contract created successfully.');
     console.log(result);
     if (!result.hash) {
@@ -341,22 +342,20 @@ async function create_name(env_config: any, test_config: any, contract_id: strin
         }
     };
 
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': headless_api_key,
-            'x-wallet-id': master_id
-        },
-        body: JSON.stringify(body)
-    });
-
-    if (!response.ok) {
-        const error_text = await response.text();
-        throw new Error(`Failed to create name: ${response.status} ${response.statusText} - ${error_text}`);
+    let result;
+    try {
+        const response = await axios.post(url, body, {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': headless_api_key,
+                'x-wallet-id': master_id
+            }
+        });
+        result = response.data;
+    } catch (error) {
+        throw new Error(`Failed to create name: ${axios_error_text(error)}`);
     }
 
-    const result = await response.json();
     console.log('Name created successfully.');
     console.log(result);
     return result;

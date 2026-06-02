@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 import { encode } from "bs58";
 import { z, ZodType } from "zod";
 import * as schemas from "./schemas";
@@ -10,12 +10,24 @@ export class ThothIdSDK {
   contractApiUrl: string;
   contractIds: Record<string, string> = {};
   timeoutMs: number;
+  private http: AxiosInstance;
 
   constructor(opts: ThothSDKOptions = {}) {
     this.nodeUrl = opts.nodeUrl ?? "https://node1.testnet.hathor.network/v1a/nano_contract/state";
     this.contractId = opts.contractId ?? null;
     this.timeoutMs = opts.timeoutMs ?? 15000;
     this.contractApiUrl = opts.contractApiUrl ?? "https://domains.thoth.id/contract-ids";
+
+    // Prefer browser-capable adapters (fetch/xhr) over Node's `http` adapter.
+    // When a bundler resolves axios's Node build into a browser app, the `http`
+    // adapter would run `req.setTimeout(...)` on a request polyfill that has no
+    // such method, crashing every request that sets a `timeout`. Forcing this
+    // order makes the SDK work in browsers regardless of the consumer's bundler
+    // config, while still falling back to `http` in a plain Node runtime.
+    this.http = axios.create({
+      timeout: this.timeoutMs,
+      adapter: ["fetch", "xhr", "http"],
+    });
   }
 
   async loadContractIds(url?: string): Promise<void> {
@@ -25,7 +37,7 @@ export class ThothIdSDK {
     }
 
     try {
-      const response = await axios.get(targetUrl, { timeout: this.timeoutMs });
+      const response = await this.http.get(targetUrl);
       this.contractIds = response.data;
     } catch (error) {
       console.error("Error loading contract IDs:", error);
@@ -81,7 +93,7 @@ export class ThothIdSDK {
 
     let json: any;
     try {
-      const resp = await axios.get(url, { timeout: this.timeoutMs });
+      const resp = await this.http.get(url);
       json = resp.data;
     } catch (err: any) {
       if (err.code === "ECONNABORTED") {
@@ -307,7 +319,7 @@ export class ThothIdSDK {
 
     let json: any;
     try {
-      const resp = await axios.get(url, { timeout: this.timeoutMs });
+      const resp = await this.http.get(url);
       json = resp.data;
     } catch (err: any) {
       if (err.code === "ECONNABORTED") {

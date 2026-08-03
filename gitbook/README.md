@@ -13,7 +13,12 @@
 
 ## About this Documentation
 
-This documentation will guide you through the process of integrating the thoth.id Sdk into your applications. Whether you're building a new decentralized application (dApp) or integrating with an existing one, this Sdk provides all the tools you need to interact with the thoth.id naming system on the Hathor Network. 🚀
+This documentation covers thoth.id from two angles:
+
+* **[Web App](web-app.md)** 🌐 — the user guide. How to connect your wallet, search for a name, register it, and manage your profile, records and ownership. Start here if you want to *use* thoth.id.
+* **[Sdk Reference](sdk-reference.md)** 📖 — the developer guide. How to read thoth.id data from your own application. Start here if you want to *build on* thoth.id.
+
+The Sdk documentation will guide you through the process of integrating the thoth.id Sdk into your applications. Whether you're building a new decentralized application (dApp) or integrating with an existing one, this Sdk provides all the tools you need to interact with the thoth.id naming system on the Hathor Network. 🚀
 
 You can find the source code for this Sdk on [GitHub](https://github.com/jackal-thothid/thoth-id-sdk).
 

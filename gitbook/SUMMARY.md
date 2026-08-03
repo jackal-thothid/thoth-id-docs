@@ -8,6 +8,23 @@
     * [Check Name Availability](getting-started/check-name-availability.md)
     * [Check Name Status](getting-started/check-name-status.md)
 
+* [Web App](web-app.md)
+
+    * [Register Your First Name](web-app/quickstart.md)
+    * [Connect Your Wallet](web-app/connect-wallet.md)
+    * [Search for a Name](web-app/search.md)
+    * [Register a Domain](web-app/register.md)
+    * [Your Dashboard](web-app/dashboard.md)
+    * [The Domain Page](web-app/domain-page.md)
+        * [Profile Tab](web-app/profile.md)
+        * [Records Tab](web-app/records.md)
+        * [Ownership & Roles](web-app/ownership.md)
+        * [Info Tab](web-app/info.md)
+    * [Renew a Domain](web-app/renew.md)
+    * [Transactions & Notifications](web-app/notifications.md)
+    * [Naming Rules & Fees](web-app/naming-rules-and-fees.md)
+    * [Troubleshooting](web-app/troubleshooting.md)
+
 * [Sdk Reference](sdk-reference.md)
     
     * Object Management 

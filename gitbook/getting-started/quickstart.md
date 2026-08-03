@@ -34,7 +34,7 @@ After creating an instance of the Sdk, you must call `loadContractIds()` to fetc
 import { ThothIdSDK } from "thoth-id-sdk";
 
 async function initializeSDK() {
-  // Connect to mainnet with default settings
+  // Connect to testnet with default settings
   const sdk = new ThothIdSDK();
 
   // Load the contract ID map
@@ -47,7 +47,7 @@ async function initializeSDK() {
 
 async function initializeTestnetSDK() {
   const sdk = new ThothIdSDK({
-    nodeUrl: "https://node1.testnet.hathor.network/",
+    nodeUrl: "https://node1.mainnet.hathor.network/v1a/nano_contract/state",
     contractApiUrl: "http://localhost:3232/contract-ids", // Your custom contract API
   });
 

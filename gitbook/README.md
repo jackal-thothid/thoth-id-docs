@@ -2,15 +2,23 @@
 
 > 🚧 **Disclaimer: Project Status** 🚧
 >
-> The thoth.id project is currently under development.
-> * The nano contract has **not yet been launched** to any public Hathor network.
-> * The official API endpoint `domains.thoth.id` is **not yet active**.
+> The **thoth.id** project is currently under active development.
+> * The nano contract has **not yet been launched** on any public Hathor network, but it will soon be deployed to the **testnet**.
+> * The official API endpoint `domains.thoth.id` is **active**, but there are currently **no contract IDs** available. Once deployed to mainnet, there will be two endpoints:
+>   * `mainnet.domains.thoth.id`
+>   * `testnet.domains.thoth.id`
+>   (with `mainnet` being the default).
 >
-> This Sdk is provided for testing and integration purposes. You can use it with a local development environment or a testnet contract.
+> This SDK is provided for **testing and integration** purposes. You can use it with a **local development environment** or a **testnet contract**.
 
 ## About this Documentation
 
-This documentation will guide you through the process of integrating the thoth.id Sdk into your applications. Whether you're building a new decentralized application (dApp) or integrating with an existing one, this Sdk provides all the tools you need to interact with the thoth.id naming system on the Hathor Network. 🚀
+This documentation covers thoth.id from two angles:
+
+* **[Web App](web-app.md)** 🌐 — the user guide. How to connect your wallet, search for a name, register it, and manage your profile, records and ownership. Start here if you want to *use* thoth.id.
+* **[Sdk Reference](sdk-reference.md)** 📖 — the developer guide. How to read thoth.id data from your own application. Start here if you want to *build on* thoth.id.
+
+The Sdk documentation will guide you through the process of integrating the thoth.id Sdk into your applications. Whether you're building a new decentralized application (dApp) or integrating with an existing one, this Sdk provides all the tools you need to interact with the thoth.id naming system on the Hathor Network. 🚀
 
 You can find the source code for this Sdk on [GitHub](https://github.com/jackal-thothid/thoth-id-sdk).
 

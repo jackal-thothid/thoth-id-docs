@@ -1,14 +1,17 @@
-# getMaxProfileValueLength()
+---
+description: Gets the maximum length of a profile data value for a given domain.
+icon: code
+---
 
-Gets the maximum length of a profile data value for a given domain.
+# getMaxProfileValueLength
 
 ## Parameters
 
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<number>`: A promise that resolves to the maximum length of a profile data value.
+* `Promise<number>`: A promise that resolves to the maximum length of a profile data value.
 
 ## Example
 

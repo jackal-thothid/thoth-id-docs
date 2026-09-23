@@ -1,14 +1,17 @@
-# getProfileData()
+---
+description: Retrieves the profile data associated with a name.
+icon: code
+---
 
-Retrieves the profile data associated with a name.
+# getProfileData
 
 ## Parameters
 
-- `name` (string): The full name to get the profile data for (e.g., `example.htr`).
+* `name` (string): The full name to get the profile data for (e.g., `example.htr`).
 
 ## Returns
 
-- `Promise<object>`: A promise that resolves to an object containing the name's profile data.
+* `Promise<object>`: A promise that resolves to an object containing the name's profile data.
 
 ## Example
 

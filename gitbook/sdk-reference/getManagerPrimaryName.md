@@ -1,15 +1,18 @@
-# getManagerPrimaryName()
+---
+description: Gets the primary name set for a manager address on a given domain.
+icon: code
+---
 
-Gets the primary name set for a manager address on a given domain.
+# getManagerPrimaryName
 
 ## Parameters
 
-- `managerAddress` (string): The manager's wallet address.
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `managerAddress` (string): The manager's wallet address.
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<string>`: A promise that resolves to the primary name set for the manager address.
+* `Promise<string>`: A promise that resolves to the primary name set for the manager address.
 
 ## Example
 

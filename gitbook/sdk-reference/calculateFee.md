@@ -1,14 +1,17 @@
-# calculateFee()
+---
+description: Calculates the registration or renewal fee for a name.
+icon: code
+---
 
-Calculates the registration or renewal fee for a name.
+# calculateFee
 
 ## Parameters
 
-- `name` (string): The full name to calculate the fee for (e.g., `example.htr`).
+* `name` (string): The full name to calculate the fee for (e.g., `example.htr`).
 
 ## Returns
 
-- `Promise<number>`: A promise that resolves to the registration or renewal fee.
+* `Promise<number>`: A promise that resolves to the registration or renewal fee.
 
 ## Example
 

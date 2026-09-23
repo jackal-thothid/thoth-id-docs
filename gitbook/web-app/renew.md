@@ -1,10 +1,15 @@
-# Renew a Domain 🗓️
+---
+description: Extend a registration by adding years before it expires.
+icon: rotate
+---
+
+# Renew a Domain
 
 Registrations are for a fixed number of years. Renewing — the app calls it **extending** — adds more years before the name lapses.
 
 Open the name's [domain page](domain-page.md) and click **Extend** in the header.
 
-![The Extend registration dialog](../assets/web-app/extend-dialog.jpg)
+![The Extend registration dialog](../.gitbook/assets/extend-dialog.jpg)
 
 ## The dialog
 

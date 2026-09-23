@@ -1,14 +1,17 @@
-# setNodeUrl()
+---
+description: Sets the Hathor full-node URL.
+icon: code
+---
 
-Sets the Hathor full-node URL.
+# setNodeUrl
 
 ## Parameters
 
-- `url` (string): The new Hathor full-node URL.
+* `url` (string): The new Hathor full-node URL.
 
 ## Returns
 
-- `void`
+* `void`
 
 ## Example
 

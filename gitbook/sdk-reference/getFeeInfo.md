@@ -1,14 +1,17 @@
-# getFeeInfo()
+---
+description: Gets information about the fees for a name.
+icon: code
+---
 
-Gets information about the fees for a name.
+# getFeeInfo
 
 ## Parameters
 
-- `name` (string): The full name to get the fee info for (e.g., `example.htr`).
+* `name` (string): The full name to get the fee info for (e.g., `example.htr`).
 
 ## Returns
 
-- `Promise<object>`: A promise that resolves to an object containing the fee information.
+* `Promise<object>`: A promise that resolves to an object containing the fee information.
 
 ## Example
 

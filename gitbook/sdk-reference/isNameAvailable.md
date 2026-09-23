@@ -1,14 +1,17 @@
-# isNameAvailable()
+---
+description: Checks if a name is available to be registered.
+icon: code
+---
 
-Checks if a name is available to be registered.
+# isNameAvailable
 
 ## Parameters
 
-- `name` (string): The full name to check (e.g., `newname.htr`).
+* `name` (string): The full name to check (e.g., `newname.htr`).
 
 ## Returns
 
-- `Promise<boolean>`: A promise that resolves to `true` if the name is available, and `false` otherwise.
+* `Promise<boolean>`: A promise that resolves to `true` if the name is available, and `false` otherwise.
 
 ## Example
 

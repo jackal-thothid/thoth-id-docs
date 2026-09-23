@@ -1,16 +1,19 @@
-# validateKeyFormat()
+---
+description: Validates the format of a key-value pair for profile data for a given domain.
+icon: code
+---
 
-Validates the format of a key-value pair for profile data for a given domain.
+# validateKeyFormat
 
 ## Parameters
 
-- `key` (string): The key to validate.
-- `value` (string): The value to validate.
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `key` (string): The key to validate.
+* `value` (string): The value to validate.
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<boolean>`: A promise that resolves to `true` if the key-value pair format is valid, and `false` otherwise.
+* `Promise<boolean>`: A promise that resolves to `true` if the key-value pair format is valid, and `false` otherwise.
 
 ## Example
 

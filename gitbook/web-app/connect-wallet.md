@@ -1,4 +1,9 @@
-# Connect Your Wallet 🔐
+---
+description: Connect a Hathor wallet to thoth.id through WalletConnect.
+icon: wallet
+---
+
+# Connect Your Wallet
 
 Your wallet is your thoth.id account. You can browse and search without one, but registering a name — or changing anything about a name you already hold — requires a connected wallet.
 
@@ -15,7 +20,7 @@ Your wallet is your thoth.id account. You can browse and search without one, but
 3. Open your Hathor wallet, choose to scan a WalletConnect QR code, and point it at the screen.
 4. Approve the session request in the wallet.
 
-![The WalletConnect dialog with a pairing QR code](../assets/web-app/connect-wallet-modal.jpg)
+![The WalletConnect dialog with a pairing QR code](../.gitbook/assets/connect-wallet-modal.jpg)
 
 You can also press the copy icon next to **Connect your wallet** to copy the pairing URI and paste it into a wallet on the same machine.
 
@@ -27,11 +32,11 @@ On a phone or tablet, **Connect Wallet** skips the QR code and deep-links straig
 
 The session asks your wallet for permission to request three things:
 
-| Permission | Used for |
-| --- | --- |
-| `htr_signWithAddress` | Proving which address you control |
+| Permission               | Used for                                                   |
+| ------------------------ | ---------------------------------------------------------- |
+| `htr_signWithAddress`    | Proving which address you control                          |
 | `htr_sendNanoContractTx` | Every registration, renewal, record change and role change |
-| `htr_createToken` | Minting the NFT that represents your name |
+| `htr_createToken`        | Minting the NFT that represents your name                  |
 
 Granting the session does **not** authorise any spending on its own. Every single transaction is pushed back to your wallet for you to review and approve individually. If you dismiss it there, nothing happens on-chain.
 
@@ -39,12 +44,12 @@ Granting the session does **not** authorise any spending on its own. Every singl
 
 The top bar changes to show:
 
-* **My Domains** — a shortcut to your [dashboard](dashboard.md).
-* **🔔 Notifications** — the status of your in-flight transactions. See [Transactions & Notifications](notifications.md).
+* **My Domains** — a shortcut to your [dashboard](https://docs.thoth.id/web-app/dashboard).
+* **Notifications** — the status of your in-flight transactions. See [Transactions & Notifications](https://docs.thoth.id/web-app/notifications).
 * **Your address**, truncated. Click it to copy the full address to your clipboard.
 * **Your avatar**, which opens a menu containing your primary name, a link to its profile, your HTR balance, and **Disconnect**.
 
-![The account menu](../assets/web-app/account-menu.jpg)
+![The account menu](../.gitbook/assets/account-menu.jpg)
 
 If you have set a [primary name](profile.md#set-a-primary-name), the app shows that name and its avatar everywhere instead of a raw address.
 

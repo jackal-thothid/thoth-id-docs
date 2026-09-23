@@ -1,3 +1,8 @@
+---
+description: Check whether a name can be registered before sending users to the app.
+icon: image-circle-check
+---
+
 # Check Name Availability
 
 This example shows how to check if a name is available to be registered.

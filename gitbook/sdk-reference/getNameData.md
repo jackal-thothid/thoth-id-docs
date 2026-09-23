@@ -1,14 +1,17 @@
-# getNameData()
+---
+description: Retrieves the raw data associated with a name.
+icon: code
+---
 
-Retrieves the raw data associated with a name.
+# getNameData
 
 ## Parameters
 
-- `name` (string): The full name to get the data for (e.g., `example.htr`).
+* `name` (string): The full name to get the data for (e.g., `example.htr`).
 
 ## Returns
 
-- `Promise<object>`: A promise that resolves to an object containing the name's data.
+* `Promise<object>`: A promise that resolves to an object containing the name's data.
 
 ## Example
 

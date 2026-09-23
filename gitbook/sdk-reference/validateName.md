@@ -1,14 +1,17 @@
-# validateName()
+---
+description: Validates the format of a name.
+icon: code
+---
 
-Validates the format of a name.
+# validateName
 
 ## Parameters
 
-- `name` (string): The full name to validate (e.g., `example.htr`).
+* `name` (string): The full name to validate (e.g., `example.htr`).
 
 ## Returns
 
-- `Promise<boolean>`: A promise that resolves to `true` if the name format is valid, and `false` otherwise.
+* `Promise<boolean>`: A promise that resolves to `true` if the name format is valid, and `false` otherwise.
 
 ## Example
 

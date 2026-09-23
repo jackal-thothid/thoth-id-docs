@@ -1,14 +1,17 @@
-# resolveName()
+---
+description: Resolves a name to its associated wallet address.
+icon: code
+---
 
-Resolves a name to its associated wallet address.
+# resolveName
 
 ## Parameters
 
-- `name` (string): The full name to resolve (e.g., `example.htr`).
+* `name` (string): The full name to resolve (e.g., `example.htr`).
 
 ## Returns
 
-- `Promise<string>`: A promise that resolves to the wallet address associated with the name.
+* `Promise<string>`: A promise that resolves to the wallet address associated with the name.
 
 ## Example
 

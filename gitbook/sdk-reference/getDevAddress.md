@@ -1,14 +1,17 @@
-# getDevAddress()
+---
+description: Gets the developer address of the contract for a given domain.
+icon: code
+---
 
-Gets the developer address of the contract for a given domain.
+# getDevAddress
 
 ## Parameters
 
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<string>`: A promise that resolves to the developer address.
+* `Promise<string>`: A promise that resolves to the developer address.
 
 ## Example
 

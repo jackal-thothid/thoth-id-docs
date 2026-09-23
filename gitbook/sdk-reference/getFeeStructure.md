@@ -1,14 +1,17 @@
-# getFeeStructure()
+---
+description: Retrieves the entire fee structure of a specific contract.
+icon: code
+---
 
-Retrieves the entire fee structure of a specific contract.
+# getFeeStructure
 
 ## Parameters
 
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<object>`: A promise that resolves to an object containing the fee structure.
+* `Promise<object>`: A promise that resolves to an object containing the fee structure.
 
 ## Example
 

@@ -1,14 +1,17 @@
-# getMaxProfileKeyLength()
+---
+description: Gets the maximum length of a profile data key for a given domain.
+icon: code
+---
 
-Gets the maximum length of a profile data key for a given domain.
+# getMaxProfileKeyLength
 
 ## Parameters
 
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<number>`: A promise that resolves to the maximum length of a profile data key.
+* `Promise<number>`: A promise that resolves to the maximum length of a profile data key.
 
 ## Example
 

@@ -1,15 +1,18 @@
-# getManagerNames()
+---
+description: Gets all names managed by a specific address on a given domain.
+icon: code
+---
 
-Gets all names managed by a specific address on a given domain.
+# getManagerNames
 
 ## Parameters
 
-- `managerAddress` (string): The manager's wallet address.
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `managerAddress` (string): The manager's wallet address.
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<string[]>`: A promise that resolves to an array of names managed by the address.
+* `Promise<string[]>`: A promise that resolves to an array of names managed by the address.
 
 ## Example
 

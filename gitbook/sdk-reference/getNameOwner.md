@@ -1,14 +1,17 @@
-# getNameOwner()
+---
+description: Gets the owner's address for a given name.
+icon: code
+---
 
-Gets the owner's address for a given name.
+# getNameOwner
 
 ## Parameters
 
-- `name` (string): The full name to get the owner of (e.g., `example.htr`).
+* `name` (string): The full name to get the owner of (e.g., `example.htr`).
 
 ## Returns
 
-- `Promise<string>`: A promise that resolves to the owner's wallet address.
+* `Promise<string>`: A promise that resolves to the owner's wallet address.
 
 ## Example
 

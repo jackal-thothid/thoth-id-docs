@@ -1,14 +1,17 @@
-# getMaxTotalProfileSize()
+---
+description: Gets the maximum total size of a profile for a given domain.
+icon: code
+---
 
-Gets the maximum total size of a profile for a given domain.
+# getMaxTotalProfileSize
 
 ## Parameters
 
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<number>`: A promise that resolves to the maximum total size of a profile.
+* `Promise<number>`: A promise that resolves to the maximum total size of a profile.
 
 ## Example
 

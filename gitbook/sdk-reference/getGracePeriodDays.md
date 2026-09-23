@@ -1,14 +1,17 @@
-# getGracePeriodDays()
+---
+description: Gets the grace period for name renewals for a given domain.
+icon: code
+---
 
-Gets the grace period for name renewals for a given domain.
+# getGracePeriodDays
 
 ## Parameters
 
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<number>`: A promise that resolves to the grace period in days.
+* `Promise<number>`: A promise that resolves to the grace period in days.
 
 ## Example
 

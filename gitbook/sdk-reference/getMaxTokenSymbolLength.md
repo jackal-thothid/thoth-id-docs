@@ -1,14 +1,17 @@
-# getMaxTokenSymbolLength()
+---
+description: Gets the maximum length of a token symbol for a given domain.
+icon: code
+---
 
-Gets the maximum length of a token symbol for a given domain.
+# getMaxTokenSymbolLength
 
 ## Parameters
 
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<number>`: A promise that resolves to the maximum length of a token symbol.
+* `Promise<number>`: A promise that resolves to the maximum length of a token symbol.
 
 ## Example
 

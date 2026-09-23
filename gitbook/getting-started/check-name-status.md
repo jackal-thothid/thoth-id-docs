@@ -1,3 +1,8 @@
+---
+description: Read the current status of a name, such as active or expired.
+icon: signal
+---
+
 # Check Name Status
 
 This example shows how to check the current status of a name (e.g., active, expired).

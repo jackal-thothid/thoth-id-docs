@@ -1,4 +1,9 @@
-# Register Your First Name 🚀
+---
+description: Register a name end to end, in five steps and one signature.
+icon: rocket
+---
+
+# Register Your First Name
 
 Five steps, one signature, about two minutes. This page is the happy path — each step links to the full detail if you want it.
 
@@ -10,9 +15,9 @@ Click **Connect Wallet** in the top-right corner.
 
 On desktop, scan the QR code with your Hathor wallet and approve the session. On a phone, the button opens the Hathor Wallet app directly.
 
-![The WalletConnect dialog](../assets/web-app/connect-wallet-modal.jpg)
+![The WalletConnect dialog](../.gitbook/assets/connect-wallet-modal.jpg)
 
-Approving the session lets thoth.id *ask* for signatures — it never lets it spend anything on its own. Every transaction still comes back to your wallet for you to approve.
+Approving the session lets thoth.id _ask_ for signatures — it never lets it spend anything on its own. Every transaction still comes back to your wallet for you to approve.
 
 → [Connect Your Wallet](connect-wallet.md)
 
@@ -20,7 +25,7 @@ Approving the session lets thoth.id *ask* for signatures — it never lets it sp
 
 Type the name you want and press **Enter**. You can leave the `.htr` off.
 
-![A search result showing an available name](../assets/web-app/search-available.jpg)
+![A search result showing an available name](../.gitbook/assets/search-available.jpg)
 
 **Available** means it's yours to take — click the row to continue. **Registered** means someone got there first. **Not supported** means the name breaks the [naming rules](naming-rules-and-fees.md#what-makes-a-valid-name); the usual causes are being under 3 characters, using capitals or accents, or doubling up a hyphen.
 
@@ -30,7 +35,7 @@ Type the name you want and press **Enter**. You can leave the `.htr` off.
 
 Pick how many years you want, from **1 to 10**. The fee per year depends on how long the name is — shorter names cost more — and the **Total** and your **Balance** are shown side by side so you can see whether you can cover it.
 
-![The registration page](../assets/web-app/register-page.jpg)
+![The registration page](../.gitbook/assets/register-page.jpg)
 
 You can add an avatar here too, but it's optional and easy to do later.
 
@@ -40,7 +45,7 @@ You can add an avatar here too, but it's optional and easy to do later.
 
 Click **Register Domain** and approve the transaction in your wallet.
 
-The name isn't yours until that transaction confirms on-chain, which usually takes a few seconds. Watch it under the 🔔 bell — you'll see it go from *pending* to *success*.
+The name isn't yours until that transaction confirms on-chain, which usually takes a few seconds. Watch it under the notification bell — you'll see it go from _pending_ to _success_.
 
 → [Transactions & Notifications](notifications.md)
 
@@ -48,11 +53,11 @@ The name isn't yours until that transaction confirms on-chain, which usually tak
 
 Your new name appears on your dashboard, tagged **PRIMARY** and **MANAGER** — your first name automatically becomes the one thoth.id shows for your address everywhere.
 
-![The dashboard](../assets/web-app/dashboard.jpg)
+![The dashboard](../.gitbook/assets/dashboard.jpg)
 
 → [Your Dashboard](dashboard.md)
 
----
+***
 
 ## Using your name
 
@@ -60,15 +65,21 @@ Your name resolves to a wallet address, so anyone can send you funds using `your
 
 This works in **Hathor wallets** to begin with, and then in any other wallet or application that integrates the thoth.id platform. Support depends on the app you're using having built it in — where it hasn't, your plain address still works exactly as before.
 
-Developers can resolve names in their own applications with the [Sdk](../sdk-reference/resolveName.md).
+Developers can resolve names in their own applications with the [SDK](https://docs.thoth.id/sdk-reference/name-methods/resolvename).
 
 ## Two things worth knowing
 
-> ⚠️ **Your wallet controls your names.**
-> There is no thoth.id account and no password reset. Whoever controls the address controls the names registered to it — so if you lose access to your wallet, you lose the names with it. Your wallet's seed phrase backup is the only way back in. Back it up, and never share it with anyone, including anyone claiming to be from thoth.id.
+{% hint style="warning" %}
+**Your wallet controls your names.**
 
-> 🗓️ **Names expire.**
-> You bought a term, not a permanent right. thoth.id warns you as the date approaches, and there's a 30-day grace period after it passes during which the name is still yours to renew — but once that ends, anyone can register it. See [Renew a Domain](renew.md).
+There is no thoth.id account and no password reset. Whoever controls the address controls the names registered to it — so if you lose access to your wallet, you lose the names with it. Your wallet's seed phrase backup is the only way back in. Back it up, and never share it with anyone, including anyone claiming to be from thoth.id.
+{% endhint %}
+
+{% hint style="info" %}
+**Names expire.**
+
+You bought a term, not a permanent right. thoth.id warns you as the date approaches, and there's a 30-day grace period after it passes during which the name is still yours to renew — but once that ends, anyone can register it. See [Renew a Domain](https://docs.thoth.id/web-app/renew).
+{% endhint %}
 
 ## Where to next
 

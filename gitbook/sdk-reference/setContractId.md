@@ -1,6 +1,11 @@
-# setContractId() 🧪
+---
+description: >-
+  Sets a specific contract ID to be used for all subsequent calls, overriding
+  any other contract resolution logic.
+icon: barcode-scan
+---
 
-Sets a specific contract ID to be used for all subsequent calls, overriding any other contract resolution logic.
+# setContractId
 
 ## Description
 
@@ -10,11 +15,11 @@ It allows you to force the Sdk to use a specific nano contract, such as one you'
 
 ## Parameters
 
-- `id` (string): The contract ID to use for all calls.
+* `id` (string): The contract ID to use for all calls.
 
 ## Returns
 
-- `void`
+* `void`
 
 ## Example
 

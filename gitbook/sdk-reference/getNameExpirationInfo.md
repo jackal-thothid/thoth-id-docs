@@ -1,14 +1,17 @@
-# getNameExpirationInfo()
+---
+description: Gets expiration information for a name.
+icon: code
+---
 
-Gets expiration information for a name.
+# getNameExpirationInfo
 
 ## Parameters
 
-- `name` (string): The full name to get the expiration info for (e.g., `example.htr`).
+* `name` (string): The full name to get the expiration info for (e.g., `example.htr`).
 
 ## Returns
 
-- `Promise<object>`: A promise that resolves to an object containing the name's expiration information.
+* `Promise<object>`: A promise that resolves to an object containing the name's expiration information.
 
 ## Example
 

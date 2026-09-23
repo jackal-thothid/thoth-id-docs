@@ -1,14 +1,17 @@
-# getContractDomain()
+---
+description: Gets the domain of the contract (e.g., .htr).
+icon: code
+---
 
-Gets the domain of the contract (e.g., `.htr`).
+# getContractDomain
 
 ## Parameters
 
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<string>`: A promise that resolves to the contract domain.
+* `Promise<string>`: A promise that resolves to the contract domain.
 
 ## Example
 

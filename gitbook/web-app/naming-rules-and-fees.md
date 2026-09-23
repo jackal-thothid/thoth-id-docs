@@ -1,4 +1,9 @@
-# Naming Rules & Fees 📏
+---
+description: Which names are valid, what they cost per year and how expiry works.
+icon: ruler
+---
+
+# Naming Rules & Fees
 
 ## What makes a valid name
 
@@ -13,17 +18,17 @@ And it must not:
 * **Start or end with a hyphen** — `-name` and `name-` are rejected.
 * Contain **two hyphens in a row** — `my--name` is rejected, `my-name` is fine.
 
-The search box lowercases and trims what you type, so `Satoshi ` is treated as `satoshi`. Anything that still breaks a rule comes back as [**Not supported**](search.md#-not-supported).
+The search box lowercases and trims what you type, so `Satoshi` is treated as `satoshi`. Anything that still breaks a rule comes back as [**Not supported**](search.md#-not-supported).
 
-| Name | Valid? | Why |
-| --- | --- | --- |
-| `satoshi` | ✅ | |
-| `my-name` | ✅ | Single hyphen in the middle is fine |
-| `web3-2026` | ✅ | Digits are fine |
-| `ab` | ❌ | Shorter than 3 characters |
-| `my--name` | ❌ | Consecutive hyphens |
-| `-name` | ❌ | Leading hyphen |
-| `café` | ❌ | Non-ASCII character |
+| Name        | Valid? | Why                                 |
+| ----------- | ------ | ----------------------------------- |
+| `satoshi`   | Yes    |                                     |
+| `my-name`   | Yes    | Single hyphen in the middle is fine |
+| `web3-2026` | Yes    | Digits are fine                     |
+| `ab`        | No     | Shorter than 3 characters           |
+| `my--name`  | No     | Consecutive hyphens                 |
+| `-name`     | No     | Leading hyphen                      |
+| `café`      | No     | Non-ASCII character                 |
 
 ## What a name costs
 
@@ -45,11 +50,11 @@ You can pay for **1 to 10 years** at a time, both when registering and when rene
 
 ## Expiry and the grace period
 
-| Phase | What it means |
-| --- | --- |
-| **Active** | Everything works normally |
+| Phase            | What it means                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------------ |
+| **Active**       | Everything works normally                                                                        |
 | **Grace period** | The name has expired. It's still yours to renew, and nobody else can take it. Lasts **30 days**. |
-| **Available** | The grace period is over. The name is released and anyone can register it. |
+| **Available**    | The grace period is over. The name is released and anyone can register it.                       |
 
 See [Renew a Domain](renew.md) for how to extend before that happens.
 
@@ -57,14 +62,14 @@ See [Renew a Domain](renew.md) for how to extend before that happens.
 
 Set by the nano contract:
 
-| Limit | Value |
-| --- | --- |
-| Names managed per address | **100** |
-| Records per name | **20** |
-| Record key length | 1–**50** characters (letters, numbers, underscores) |
-| Record value length | 1–**200** characters |
-| Total size of all records | 10,000 bytes |
-| Avatar image upload | **5 MB** |
-| NFT token symbol | First **5** characters of the name, uppercased |
+| Limit                     | Value                                               |
+| ------------------------- | --------------------------------------------------- |
+| Names managed per address | **100**                                             |
+| Records per name          | **20**                                              |
+| Record key length         | 1–**50** characters (letters, numbers, underscores) |
+| Record value length       | 1–**200** characters                                |
+| Total size of all records | 10,000 bytes                                        |
+| Avatar image upload       | **5 MB**                                            |
+| NFT token symbol          | First **5** characters of the name, uppercased      |
 
 The record limits are covered in more detail on the [Records](records.md) page.

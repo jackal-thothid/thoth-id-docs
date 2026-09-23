@@ -1,15 +1,18 @@
-# checkNameOwnership()
+---
+description: Checks if a given address owns a name.
+icon: code
+---
 
-Checks if a given address owns a name.
+# checkNameOwnership
 
 ## Parameters
 
-- `name` (string): The full name to check (e.g., `example.htr`).
-- `address` (string): The wallet address to check.
+* `name` (string): The full name to check (e.g., `example.htr`).
+* `address` (string): The wallet address to check.
 
 ## Returns
 
-- `Promise<boolean>`: A promise that resolves to `true` if the address owns the name, and `false` otherwise.
+* `Promise<boolean>`: A promise that resolves to `true` if the address owns the name, and `false` otherwise.
 
 ## Example
 

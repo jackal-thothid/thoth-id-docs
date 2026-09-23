@@ -1,14 +1,17 @@
-# getMaxProfileDataEntries()
+---
+description: Gets the maximum number of data entries in a profile for a given domain.
+icon: code
+---
 
-Gets the maximum number of data entries in a profile for a given domain.
+# getMaxProfileDataEntries
 
 ## Parameters
 
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<number>`: A promise that resolves to the maximum number of data entries.
+* `Promise<number>`: A promise that resolves to the maximum number of data entries.
 
 ## Example
 

@@ -1,14 +1,17 @@
-# checkNameStatus()
+---
+description: Checks the current status of a name (e.g., active, expired).
+icon: code
+---
 
-Checks the current status of a name (e.g., active, expired).
+# checkNameStatus
 
 ## Parameters
 
-- `name` (string): The full name to check (e.g., `example.htr`).
+* `name` (string): The full name to check (e.g., `example.htr`).
 
 ## Returns
 
-- `Promise<string>`: A promise that resolves to the current status of the name.
+* `Promise<string>`: A promise that resolves to the current status of the name.
 
 ## Example
 

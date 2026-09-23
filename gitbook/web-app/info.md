@@ -1,8 +1,13 @@
-# Info Tab 🧾
+---
+description: The raw contract record for a name, exactly as the nano contract returns it.
+icon: circle-down
+---
+
+# Info Tab
 
 The Info tab prints the raw contract record for the name, exactly as the nano contract returns it. It's the quickest way to confirm what's actually stored on-chain, and handy when you're reporting a problem.
 
-![The Info tab](../assets/web-app/domain-info.jpg)
+![The Info tab](../.gitbook/assets/domain-info.jpg)
 
 ```json
 {
@@ -15,14 +20,14 @@ The Info tab prints the raw contract record for the name, exactly as the nano co
 }
 ```
 
-| Field | Meaning |
-| --- | --- |
-| `token_uid` | The NFT minted for this name |
-| `owner_address` | Current [owner](ownership.md) |
-| `is_deposited` | `"True"` when the contract holds the NFT, `"False"` when the owner does |
-| `manager_address` | Current [manager](ownership.md) |
-| `resolving_address` | The address the name resolves to |
-| `expiration_date` | Expiry as a Unix timestamp, in seconds |
+| Field               | Meaning                                                                 |
+| ------------------- | ----------------------------------------------------------------------- |
+| `token_uid`         | The NFT minted for this name                                            |
+| `owner_address`     | Current [owner](ownership.md)                                           |
+| `is_deposited`      | `"True"` when the contract holds the NFT, `"False"` when the owner does |
+| `manager_address`   | Current [manager](ownership.md)                                         |
+| `resolving_address` | The address the name resolves to                                        |
+| `expiration_date`   | Expiry as a Unix timestamp, in seconds                                  |
 
 The same record is available to applications through the Sdk's [`getNameData`](../sdk-reference/getNameData.md).
 

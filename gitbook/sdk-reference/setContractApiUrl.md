@@ -1,6 +1,11 @@
-# setContractApiUrl()
+---
+description: >-
+  Updates the contractApiUrl of the SDK, so you can switch between contract API
+  endpoints.
+icon: code
+---
 
-Method to update the `contractApiUrl` of the SDK. This is useful if you want to switch between different contract API endpoints.
+# setContractApiUrl
 
 ## Signature
 
@@ -11,12 +16,14 @@ setContractApiUrl(url: string): void
 ## Parameters
 
 ### url
+
 The new URL for the contract API.
 
-- Type: `string`
-- Required: `true`
+* Type: `string`
+* Required: `true`
 
 ## Returns
+
 `void`
 
 ## Example

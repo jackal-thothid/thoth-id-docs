@@ -1,14 +1,17 @@
-# getNameExpirationDate()
+---
+description: Gets the exact expiration date of a name.
+icon: code
+---
 
-Gets the exact expiration date of a name.
+# getNameExpirationDate
 
 ## Parameters
 
-- `name` (string): The full name to get the expiration date for (e.g., `example.htr`).
+* `name` (string): The full name to get the expiration date for (e.g., `example.htr`).
 
 ## Returns
 
-- `Promise<number>`: A promise that resolves to the expiration date of the name as a Unix timestamp.
+* `Promise<number>`: A promise that resolves to the expiration date of the name as a Unix timestamp.
 
 ## Example
 

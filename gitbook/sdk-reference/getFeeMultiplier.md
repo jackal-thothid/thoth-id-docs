@@ -1,15 +1,18 @@
-# getFeeMultiplier()
+---
+description: Gets the fee multiplier for a name of a certain length for a given domain.
+icon: code
+---
 
-Gets the fee multiplier for a name of a certain length for a given domain.
+# getFeeMultiplier
 
 ## Parameters
 
-- `length` (number): The length of the name.
-- `domainSuffix` (string): The domain suffix (e.g., `htr`).
+* `length` (number): The length of the name.
+* `domainSuffix` (string): The domain suffix (e.g., `htr`).
 
 ## Returns
 
-- `Promise<number>`: A promise that resolves to the fee multiplier.
+* `Promise<number>`: A promise that resolves to the fee multiplier.
 
 ## Example
 

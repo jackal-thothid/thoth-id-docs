@@ -1,3 +1,8 @@
+---
+description: Resolve a thoth.id name to its wallet address with the SDK.
+icon: magnifying-glass
+---
+
 # Resolve a Name
 
 This example shows how to resolve a thoth.id name to its associated wallet address.
@@ -20,6 +25,7 @@ async function resolveName() {
 
 resolveName();
 ```
+
 Or in a simple way:
 
 ```typescript

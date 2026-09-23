@@ -1,21 +1,26 @@
-# Transactions & Notifications 🔔
+---
+description: Follow each transaction from your wallet to on-chain confirmation.
+icon: bell
+---
+
+# Transactions & Notifications
 
 Everything you change in thoth.id is a blockchain transaction, and blockchain transactions take a moment to confirm. The notification centre is where you watch them.
 
-Click the **🔔 bell** in the top bar. It only appears when a wallet is connected. A dot on the bell means there's something you haven't looked at yet.
+Click the **bell** in the top bar. It only appears when a wallet is connected. A dot on the bell means there's something you haven't looked at yet.
 
-![The notification centre](../assets/web-app/notifications.jpg)
+![The notification centre](../.gitbook/assets/notifications.jpg)
 
 Each entry shows what happened and when. Click one to see its details, including the transaction hash.
 
 ## Statuses
 
-| Status | Meaning |
-| --- | --- |
+| Status      | Meaning                                                                             |
+| ----------- | ----------------------------------------------------------------------------------- |
 | **Waiting** | Queued behind another transaction, and will start on its own once that one succeeds |
-| **Pending** | Submitted to the network, waiting to confirm |
-| **Success** | Confirmed on-chain |
-| **Failed** | Rejected in your wallet, or failed on-chain |
+| **Pending** | Submitted to the network, waiting to confirm                                        |
+| **Success** | Confirmed on-chain                                                                  |
+| **Failed**  | Rejected in your wallet, or failed on-chain                                         |
 
 Notifications are grouped under three tabs — **All**, **Pending** and **Completed** — and **Clear all** empties the list. Clearing is display-only; it never affects anything on-chain.
 
@@ -30,13 +35,13 @@ The queue is stored in your browser, so it survives a reload — reopen the tab 
 Some actions need two steps, and the second can't start until the first has confirmed. The clearest example is [registering a name with an avatar](register.md#if-you-chose-an-avatar):
 
 1. **Registering yourname.htr** — pending.
-2. **Waiting to update avatar_link for yourname.htr** — held back.
+2. **Waiting to update avatar\_link for yourname.htr** — held back.
 
 When step 1 confirms, step 2 starts by itself: the image is uploaded and your wallet asks you to sign the record update. If step 1 fails, step 2 is cancelled and no image is uploaded.
 
 ## Toasts
 
-Short-lived messages also appear in the corner as things happen — *Confirm the transaction in your wallet*, *Registration submitted!*, *Failed to update record*. They disappear on their own; the notification centre is the durable record.
+Short-lived messages also appear in the corner as things happen — _Confirm the transaction in your wallet_, _Registration submitted!_, _Failed to update record_. They disappear on their own; the notification centre is the durable record.
 
 ## When something fails
 

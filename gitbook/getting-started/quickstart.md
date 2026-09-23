@@ -1,8 +1,13 @@
-# Getting Started 🚀
+---
+description: Install the SDK, load the contract IDs and resolve your first name.
+icon: rocket
+---
+
+# Quickstart
 
 ## (Very fast) quickstart
 
-This is an example of simple usage of thoth.id Sdk:
+This is an example of simple usage of thoth.id SDK:
 
 ```typescript
 import { ThothIdSDK } from "thoth-id-sdk";
@@ -26,9 +31,9 @@ For more information read other sections.
 
 ## Overview
 
-First, import and instantiate the Sdk. The Sdk is configured by default to connect to the main Hathor network and the main thoth.id contract API.
+First, import and instantiate the SDK. The SDK is configured by default to connect to the main Hathor network and the main thoth.id contract API.
 
-After creating an instance of the Sdk, you must call `loadContractIds()` to fetch the map of available domain suffixes and their corresponding contract IDs. It must be done because the Sdk does not store information about Hathor Network Contract Ids.
+After creating an instance of the SDK, you must call `loadContractIds()` to fetch the map of available domain suffixes and their corresponding contract IDs. It must be done because the SDK does not store information about Hathor Network Contract Ids.
 
 ```typescript
 import { ThothIdSDK } from "thoth-id-sdk";
@@ -59,9 +64,9 @@ async function initializeTestnetSDK() {
 
 It is possible to change `nodeUrl` and `contractApiUrl`, but we recommend using the default values. Custom URLs are intended primarily for testing purposes.
 
-### Using a specific `contractId` (for testing) 🧪
+### Using a specific `contractId` (for testing)
 
-For testing or development purposes, you can instantiate the Sdk with a specific `contractId`. This will bypass the contract resolution from the `contractApiUrl` and force the Sdk to use the provided `contractId` for all calls.
+For testing or development purposes, you can instantiate the SDK with a specific `contractId`. This will bypass the contract resolution from the `contractApiUrl` and force the SDK to use the provided `contractId` for all calls.
 
 ```typescript
 async function initializeTestSDKWithContractId() {

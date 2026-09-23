@@ -7,7 +7,9 @@ icon: code
 
 # SDK Reference
 
-This section provides a detailed overview of the classes and methods available in the thoth.id SDK.
+This section provides a detailed overview of the classes and methods available in the thoth.id SDK. Start with a group, or jump to a method in the table below.
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Object Management</strong></td><td>Create the SDK instance and point it at a node and contract.</td><td><a href="sdk-reference/object-management/">object-management</a></td></tr><tr><td><strong>Name Methods</strong></td><td>Resolve, validate and inspect names and their owners.</td><td><a href="sdk-reference/name-methods/">name-methods</a></td></tr><tr><td><strong>Fee Information</strong></td><td>Read fees, multipliers and the full fee structure.</td><td><a href="sdk-reference/fee-information/">fee-information</a></td></tr><tr><td><strong>Contract Information</strong></td><td>Managers, dev address, grace period and profile limits.</td><td><a href="sdk-reference/contract-information/">contract-information</a></td></tr></tbody></table>
 
 ## Classes
 
@@ -19,7 +21,7 @@ The main class for interacting with the thoth.id nano contracts.
 
 | Method                                                                  | Description                                                                        |
 | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| [`constructor`](sdk-reference/constructor.md)                           | Creates a new instance of the Sdk.                                                 |
+| [`constructor`](sdk-reference/constructor.md)                           | Creates a new instance of the SDK.                                                 |
 | [`loadContractIds`](sdk-reference/loadContractIds.md)                   | Fetches the map of available domain suffixes and their corresponding contract IDs. |
 | [`setNodeUrl`](sdk-reference/setNodeUrl.md)                             | Sets the Hathor full-node URL.                                                     |
 | [`setContractId`](sdk-reference/setContractId.md)                       | Sets a specific contract ID to be used for all calls.                              |

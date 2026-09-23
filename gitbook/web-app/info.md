@@ -29,6 +29,8 @@ The Info tab prints the raw contract record for the name, exactly as the nano co
 | `resolving_address` | The address the name resolves to                                        |
 | `expiration_date`   | Expiry as a Unix timestamp, in seconds                                  |
 
-The same record is available to applications through the Sdk's [`getNameData`](../sdk-reference/getNameData.md).
+The same record is available to applications through the SDK's [`getNameData`](../sdk-reference/getNameData.md).
 
-> `expiration_date` is a Unix timestamp — `1865168691` is 7 February 2029. The [Profile](profile.md) and [Ownership](ownership.md) tabs show it as a readable date.
+{% hint style="info" %}
+`expiration_date` is a Unix timestamp — `1865168691` is 7 February 2029. The [Profile](profile.md) and [Ownership](ownership.md) tabs show it as a readable date.
+{% endhint %}

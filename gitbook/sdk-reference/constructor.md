@@ -7,7 +7,7 @@ icon: code
 
 ## Parameters
 
-* `opts` (ThothSDKOptions): An optional object to configure the Sdk instance.
+* `opts` (ThothSDKOptions): An optional object to configure the SDK instance.
 
 ### ThothSDKOptions Schema
 
@@ -22,7 +22,7 @@ The `opts` parameter is an object of type `ThothSDKOptions` with the following p
 
 ## Returns
 
-* `ThothIdSDK`: A new instance of the thoth.id Sdk.
+* `ThothIdSDK`: A new instance of the thoth.id SDK.
 
 ## Example
 

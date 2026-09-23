@@ -41,7 +41,9 @@ The name breaks the [naming rules](https://docs.thoth.id/web-app/naming-rules-an
 
 In the example above, `my--name` is rejected because thoth.id doesn't allow two hyphens in a row. `my-name` would be fine.
 
-> The same status appears if the availability check itself fails — for example if the Hathor node can't be reached. If a name you expect to be valid comes back as _Not supported_, try the search again.
+{% hint style="info" %}
+The same status appears if the availability check itself fails — for example if the Hathor node can't be reached. If a name you expect to be valid comes back as _Not supported_, try the search again.
+{% endhint %}
 
 ## Searching from the dashboard
 

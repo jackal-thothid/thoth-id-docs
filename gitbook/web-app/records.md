@@ -61,4 +61,4 @@ Keys are case-sensitive, so `Website` and `website` are two different records. S
 
 ## Reading records from code
 
-Anything you store here is readable through the Sdk with [`getProfileData`](../sdk-reference/getProfileData.md), so records are the natural place to publish data you want other applications to pick up.
+Anything you store here is readable through the SDK with [`getProfileData`](../sdk-reference/getProfileData.md), so records are the natural place to publish data you want other applications to pick up.

@@ -62,7 +62,9 @@ The avatar can't be written until the name exists, so the app queues it. As soon
 
 You'll see both steps in the notification centre — the second one sits in a _waiting_ state until the first succeeds.
 
-> Keep the tab open until the avatar step has asked for its signature. If you close it, the name is still registered — just set the avatar manually later from the [Profile tab](profile.md).
+{% hint style="info" %}
+Keep the tab open until the avatar step has asked for its signature. If you close it, the name is still registered — just set the avatar manually later from the [Profile tab](profile.md).
+{% endhint %}
 
 ## Limits
 

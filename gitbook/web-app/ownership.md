@@ -1,75 +1,58 @@
 ---
 description: >-
-  Owner, manager, NFT token and resolver. Who controls a name, and how to change
-  it.
+  Owner, manager and the name's token. Who controls a name, and how to transfer
+  or sell it.
 icon: crown
 ---
 
-# Ownership & Roles
+# Ownership
 
-This tab is where control of a name lives: who owns it, who manages it, where the NFT is, and which address the name resolves to.
+The **Ownership** section of [Manage mode](domain-page.md#manage-mode) is where control of a name lives: who owns it, where its token is, and how to hand it to someone else.
 
-![The Ownership tab](../.gitbook/assets/domain-ownership.jpg)
+![The Ownership section, seen by the owner](../.gitbook/assets/manage-ownership.jpg)
 
 ## The two roles
 
-| Role        | Held by                                 | Can do                                                                                                                         |
-| ----------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **Owner**   | The address that holds the name's NFT   | Transfer ownership, change the manager, change the resolver, deposit and withdraw the NFT — plus everything the manager can do |
-| **Manager** | The address in charge of day-to-day use | Edit the [profile](profile.md) and [records](records.md), set the name as primary, and hand the manager role to someone else   |
+| Role        | Held by                                  | Can do                                                                                                                   |
+| ----------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Owner**   | The address that holds the name's token  | Transfer ownership, change the manager, withdraw and deposit the token                                                   |
+| **Manager** | The address in charge of day-to-day use  | Edit the [profile](profile.md) and [records](records.md), change [where the name resolves to](addresses.md#resolves-to), set it as [primary name](addresses.md#primary-name), and hand the manager role on |
 
-When you register a name you get both roles. They only diverge if you deliberately split them — for instance, owning a name yourself while letting a teammate manage its profile.
+When you register a name you get both roles. They only diverge if you split them on purpose, for instance owning a name yourself while a teammate manages its profile. Note that the owner can't edit the profile or records directly; an owner who isn't the manager can [make themselves manager](addresses.md#manager) first.
 
-The name appears on the [**dashboard**](dashboard.md) of whoever is the _manager_.
+The name appears in [**My names**](dashboard.md) for whoever is the _manager_.
 
-## Domain details
+## The name's token
 
-Below the roles:
+Registering a name mints a **token** (an NFT) that represents it. The **Token** row shows its symbol and ID, with a link to the Hathor explorer.
 
-* **Expiration date** — when the registration runs out. See [Renew a Domain](renew.md).
-* **Token ID** — the NFT that represents the name, with a link to the Hathor explorer and a badge reading **Deposited** or **Withdrawn**.
-* **Resolver** — the address this name resolves to. This is what wallets and apps get back when they look the name up. Only the owner can change it; **Default** means it falls back to the registered address.
+### Deposited and withdrawn
 
-![Domain details, with the token withdrawn](../.gitbook/assets/ownership-token.jpg)
+The token can sit in one of two places.
 
-## Deposited vs Withdrawn — and why it matters
+**Deposited** (the default after registration): the contract holds the token. The owner is recorded in the contract and can transfer ownership and change the manager.
 
-The NFT can sit in one of two places.
+**Withdrawn**: the token is in a wallet. It behaves like any other Hathor token: you can hold it, send it, or sell it on a marketplace. While it's out, the contract can't confirm who the owner is, so owner actions are paused. The name page shows the address that withdrew it as **Last owner**.
 
-**Deposited** (the default after registration) — the contract holds the token. Roles are managed inside the contract, so the owner can reassign them.
+* The **owner** sees **Withdraw token** while it's deposited. A dialog explains what withdrawing pauses; one wallet signature, no fee.
+* While it's withdrawn, anyone sees **Deposit token**, in Manage mode and on the name's public page. There's no confirmation dialog.
 
-**Withdrawn** — the token is in the owner's wallet. It behaves like any other Hathor NFT: you can hold it, send it, or sell it on a marketplace. While it's out, the contract will not let the owner reassign roles.
+![The Withdraw token dialog](../.gitbook/assets/withdraw-dialog.jpg)
 
-Use the **Withdraw** / **Deposit** button next to the Token ID:
+**Depositing the token makes you the owner.** That is how selling a name works: send the token to the buyer, and when they deposit it back into the contract, ownership follows. If your wallet doesn't hold the token, the deposit fails and nothing changes.
 
-* The **owner** sees **Withdraw** while the token is deposited, and **Deposit** while it's withdrawn.
-* **Anyone holding a withdrawn token** sees **Deposit** — and this is the key part: **depositing the token makes you the owner.** That is how selling a name works. Transfer the NFT to the buyer, and when they deposit it back into the contract, ownership follows.
+## Transfer ownership
 
-## Editing roles
+The owner sees **Transfer ownership…** at the bottom of the section. It opens a dialog:
 
-**Edit roles** opens a dialog with the manager and owner addresses.
+1. Enter the **new owner**: an address or a `.htr` name (see [Entering an address](addresses.md#entering-an-address)).
+2. If you're also the manager, you can tick **Also make them manager**. That adds a second signature, sent once the transfer is confirmed. Otherwise you stay manager until they change it.
+3. **Type the name** to confirm, then click **Transfer ownership**.
 
-Who can change what:
-
-| Change      | Allowed when                                                                              |
-| ----------- | ----------------------------------------------------------------------------------------- |
-| **Manager** | You are the current manager (always), **or** you are the owner and the token is deposited |
-| **Owner**   | You are the owner **and** the token is deposited                                          |
-
-If a field is locked, the dialog tells you why. The usual cause is a withdrawn token — deposit it first, or transfer the NFT and let the new owner deposit it.
-
-![The Edit roles dialog with the owner field locked](../.gitbook/assets/edit-roles-dialog.jpg)
-
-The example above shows exactly that: the wallet is both owner and manager, but because the token is **withdrawn**, only the manager field is editable and the owner field explains what to do about it.
-
-Changing the manager and transferring ownership are **two separate transactions**. Change both at once and your wallet prompts you twice.
+![The Transfer ownership dialog](../.gitbook/assets/transfer-dialog.jpg)
 
 {% hint style="danger" %}
-Transferring ownership is final. There is no undo, and the new owner does not have to give it back. Check the address character by character before you sign.
+Transferring ownership is final. There is no undo, and the new owner can change the manager, withdraw the token and transfer the name again. Check the address before you approve.
 {% endhint %}
 
-## Changing the resolver
-
-The owner can edit the **Resolver** field to point the name at a different address. The address is validated before the button unlocks, so an obvious typo won't get submitted — but a valid address that isn't yours will, so double-check it.
-
-This is what changes the answer to [`resolveName`](../sdk-reference/resolveName.md) for everyone using the SDK.
+Transferring requires the token to be **deposited**. If it's withdrawn, deposit it first.

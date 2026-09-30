@@ -1,57 +1,47 @@
 ---
-description: Every name you manage, with its status and expiry, in one list.
+description: Every name you manage, with its role and expiry, in one list.
 icon: gauge
 ---
 
-# Your Dashboard
+# My Names
 
-The dashboard is the list of every name you currently **manage**. Reach it from **My Domains** in the top bar, or at **/dashboard**.
+**My names** lists every name your wallet **manages**. Open it from **My names** in the top bar (or the account menu on a phone), or go to **/dashboard**.
 
-It requires a connected wallet — opening it while disconnected sends you back to the landing page.
+If your wallet isn't connected, the page asks you to connect instead of showing the list.
 
-![The dashboard with one registered domain](../.gitbook/assets/dashboard.jpg)
+![My names with one name, owned and managed by this wallet and marked with a star as the primary name](../.gitbook/assets/my-names.jpg)
 
-## 01 · Search
+## The list
 
-The search box filters the names you already hold as you type.
+The header shows how many names your address manages, and a **Register a name** button that takes you to search.
 
-If nothing in your list matches, the app checks that name **on-chain** instead and shows you a single global result — _Available_, _Registered_ or _Not supported_, exactly like the [search page](search.md). Click it to register the name or to open its domain page.
+Each row is one name. Click a row to open the name's [page](domain-page.md).
 
-That makes the box a quick way to check any name without leaving the dashboard.
+| Column      | Meaning                                                                                              |
+| ----------- | ---------------------------------------------------------------------------------------------------- |
+| **Name**    | The name and its avatar. A **star** marks your [primary name](addresses.md#primary-name).             |
+| **Role**    | **Owner and manager**, or **Manager** if someone else owns it                                         |
+| **Expires** | The expiry date and how long is left, for example _in 2 years_                                        |
 
-## 02 · Domains
+The expiry turns **yellow** in the last 30 days and **red** once the name has expired. From 30 days before expiry, and through the renewal window, the row gets a **Renew** button. See [Renew a Name](renew.md).
 
-Each row is one name you manage. Click a row to open its [domain page](domain-page.md) on the Profile tab.
+When at least one name needs renewing, a warning at the top says how many, and when an expired name will become available to anyone.
 
-A row shows:
+With 5 or more names, a **Filter your names** box appears above the list.
 
-| Element             | Meaning                                                                         |
-| ------------------- | ------------------------------------------------------------------------------- |
-| **Name**            | The name, without the `.htr` suffix                                             |
-| **Expiration pill** | How long is left — _Expires in 2 years_, _Expires in 12 days_, or _Expired_     |
-| **Primary tag**     | Shown on the one name set as your [primary name](profile.md#set-a-primary-name) |
-| **Manager tag**     | Your role on this name                                                          |
+If you don't manage any name yet, the page says _You don't have a .htr name yet_ and offers **Find a name**.
 
-The expiration pill is colour-coded: grey when there's plenty of time, **yellow** within 30 days of expiry, and **red** once the name has expired.
+## Changes in progress
 
-On narrow screens the tags collapse into icons to save space — tap one to expand it.
+The list follows your transactions:
 
-If you manage nothing yet, the list reads _You don't own any domains yet._
+* A registration that's still confirming shows as a dimmed row, **Registering** with a timer.
+* A name with a change in flight shows a pill such as **Renewal pending** or **Avatar pending**.
 
-## The summary bar
-
-At the bottom:
-
-* **Owned** — how many names you manage.
-* **Expiring soon** — how many expire within the next 30 days. A yellow _Renewals due within 30 days_ warning appears when that count is above zero.
-* **Register new** — takes you to search, carrying whatever you've typed in the search box.
+Both disappear on their own when the transaction confirms. If it fails, the row goes back to how it was, and the bell keeps the reason.
 
 ## Manager, not owner
 
-The dashboard lists names where you are the **manager**. On a name you registered yourself, you are both owner and manager, so it makes no difference.
+The list shows names where you are the **manager**. On a name you registered yourself you're both, so it makes no difference.
 
-They can differ: if you transfer ownership of a name but stay its manager, it keeps appearing here. If you hand the manager role to somebody else, it disappears from your dashboard even though you may still own the NFT. See [Ownership & Roles](ownership.md) for what each role can do.
-
-## Staying up to date
-
-The list is loaded when the page opens. After a transaction confirms, reload the page to see the new state — the [domain page](domain-page.md) refreshes itself automatically, but the dashboard list does not.
+They can differ: if you transfer ownership of a name but stay its manager, it keeps appearing here. If you hand the manager role to somebody else, it disappears from your list even if you still own it. See [Ownership](ownership.md) for what each role can do.

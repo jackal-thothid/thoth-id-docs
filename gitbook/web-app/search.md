@@ -1,50 +1,58 @@
 ---
-description: Find out whether a name is available, registered or not supported.
+description: Find out whether a name is available, registered, expired or not supported.
 icon: magnifying-glass
 ---
 
 # Search for a Name
 
-The search page tells you whether a name is free, already taken, or not a valid thoth.id name at all. You do **not** need a connected wallet to search.
+Search tells you whether a name is free, what it costs, or who already holds it. You do **not** need a connected wallet to search.
 
-Go to **/search**, or click the thoth.id logo while connected.
+There are three places to search:
 
-![The empty search page](../.gitbook/assets/search-empty.jpg)
+* The **search page** at **/search**.
+* The **hero** on the landing page.
+* The **search box in the top bar**. Press <kbd>/</kbd> anywhere to jump to it. On a phone, tap the magnifying glass.
+
+![The search page](../.gitbook/assets/search-empty.jpg)
 
 ## Searching
 
-Type the name you want and press **Enter** or click **Search**. You can leave the suffix off — `satoshi` and `satoshi.htr` are the same query. Input is lowercased and trimmed automatically, so `Satoshi` still finds `satoshi.htr`.
+Start typing. The result appears **as you type**, no need to press Enter. You can leave the `.htr` suffix off: `satoshi` and `satoshi.htr` are the same query. Input is lowercased and trimmed, so `Satoshi` still finds `satoshi.htr`.
+
+The line under the field sums up the rules: lowercase letters, numbers and single hyphens, 3 to 80 characters. The full rules are in [Naming Rules & Fees](naming-rules-and-fees.md#what-makes-a-valid-name).
 
 The search term is kept in the URL (`/search?q=satoshi`), so a result is a link you can bookmark or send to somebody.
 
 ## Reading the result
 
-You get exactly one result, with one of three status pills.
+You get one result row, with one of these status pills.
 
 ### Available
 
-Nobody holds this name. Click the row to go straight to [registration](register.md).
+Nobody holds this name. The row shows its price per year and a **Register** button that takes you to [registration](register.md).
 
-![](../.gitbook/assets/search-available.jpg)
+![A search result showing an available name](../.gitbook/assets/search-available.jpg)
 
 ### Registered
 
-Somebody already holds it. Click the row to open its [public domain page](https://docs.thoth.id/web-app/domain-page), where you can see who controls it and when it expires.
+Somebody already holds it. The row shows when it expires and a **View profile** button that opens its [public page](domain-page.md).
 
-A registered name is not necessarily taken forever — names expire. If the expiry date has passed and the 30-day [grace period](naming-rules-and-fees.md#expiry-and-the-grace-period) is over, the name becomes available again.
+![A search result showing a registered name](../.gitbook/assets/search-registered.jpg)
+
+A registered name is not taken forever. Names expire, and once the [renewal window](naming-rules-and-fees.md#expiry-and-the-renewal-window) is over, the name becomes available again.
+
+### Expired
+
+The name has expired but is still in its **renewal window**. The row shows the date the window ends. Until then only a renewal is possible; after that, anyone can register it.
 
 ### Not supported
 
-The name breaks the [naming rules](https://docs.thoth.id/web-app/naming-rules-and-fees#what-makes-a-valid-name) — it is too short or too long, contains characters that aren't allowed, or misuses hyphens. The row is greyed out and can't be clicked.
+The name breaks the naming rules. The row says exactly what's wrong (for example _Spaces aren't allowed._ or _Use lowercase letters._) and, when it can, suggests a valid name close to what you typed. Click the suggestion to search for it.
 
-![A search result showing an unsupported name](../.gitbook/assets/search-not-supported.jpg)
+![A search result showing an unsupported name with a suggestion](../.gitbook/assets/search-not-supported.jpg)
 
-In the example above, `my--name` is rejected because thoth.id doesn't allow two hyphens in a row. `my-name` would be fine.
+In the example above, `my--name` is rejected because thoth.id doesn't allow two hyphens in a row, and the app suggests `my-name` instead.
 
-{% hint style="info" %}
-The same status appears if the availability check itself fails — for example if the Hathor node can't be reached. If a name you expect to be valid comes back as _Not supported_, try the search again.
-{% endhint %}
+### Couldn't check
 
-## Searching from the dashboard
-
-The [dashboard](dashboard.md) has its own search box. It filters the names you already control first, and only falls back to an on-chain availability check when nothing in your own list matches.
+The app couldn't reach the Hathor node, so it doesn't know yet. This is **not** the same as _Not supported_. Click **Try again**.

@@ -7,54 +7,50 @@ icon: wrench
 
 ## Connecting
 
-**The QR code doesn't do anything.** Check that your wallet is on the **Hathor testnet**, the same network the app is pinned to. A wallet on a different network can't match the session request. Then close the dialog, click **Connect Wallet** again to get a fresh code — pairing URIs expire after a short while.
+**The QR code doesn't do anything.** Check that your wallet is on the **Hathor testnet**, the same network as the app. A wallet on another network can't match the session request. Then close the dialog and click **Connect wallet** again to get a fresh code; pairing links expire after a while.
 
-**On mobile, tapping Connect Wallet opens the app store.** That means the Hathor Wallet app wasn't detected on the device. Install it, then come back and tap again.
+**On mobile, tapping Connect wallet opens the app store.** The Hathor Wallet app wasn't found on the device. Install it, then come back and tap again.
 
-**I get redirected to the landing page when I open /dashboard.** The dashboard needs a connected wallet. Connect first, then use **My Domains**.
+**The button is stuck on "Waiting for Hathor Wallet…".** The session request hasn't been approved yet. Open the wallet, look for the pending request, and approve or refuse it.
 
-**I connected, but the top bar still shows "Connect Wallet".** The session request was probably never approved in the wallet. Open the wallet, check for a pending request, and approve or dismiss it before retrying.
+**My names asks me to connect.** The list needs a connected wallet. Connect from that page or the top bar.
 
 ## Searching and registering
 
-**A name I know is valid shows as "Not supported".** That status also appears when the availability check itself fails — usually a Hathor node that's slow or unreachable. Search again. If it persists, check the [naming rules](naming-rules-and-fees.md#what-makes-a-valid-name); the usual culprits are consecutive hyphens and non-ASCII characters.
+**A search says "Couldn't check".** The app couldn't reach the Hathor node. Click **Try again**. This doesn't mean anything is wrong with the name.
 
-**The register button is greyed out.** One of: the wallet isn't connected, the fee is still loading, your HTR balance is below the total, or the transaction has already been submitted. The summary bar shows which — an insufficient balance is called out in red.
+**A name shows as "Not supported".** The row says which rule it breaks, and usually suggests a valid alternative. See the [naming rules](naming-rules-and-fees.md#what-makes-a-valid-name); the usual culprits are capitals, spaces, accents and consecutive hyphens.
 
-**"Invalid name format. Please go back and try a different name."** The name reached the register page but the contract rejects it. Go back and pick one that follows the [naming rules](naming-rules-and-fees.md#what-makes-a-valid-name).
+**The register button is disabled.** One of: the price is still loading, your balance is below the total (the page says how much more you need), or the transaction has already been sent.
 
-**Someone registered the name between my search and my registration.** Possible — availability is checked at search time, and the winner is whoever's transaction confirms first. The transaction will fail and no fee is charged.
+**"Someone registered yourname.htr first".** Another registration confirmed before yours. The app checks availability right before your wallet opens, but two people can still race. Your HTR wasn't spent.
 
 ## Transactions
 
-**My wallet never asked me to sign.** Bring the wallet app to the foreground; requests can queue silently there. If nothing arrives, disconnect from the avatar menu, reconnect, and try again.
+**Hathor Wallet never asked me to sign.** Bring the wallet app to the foreground; requests can wait there silently. On a phone, use **Open Hathor Wallet** on the page. If nothing arrives, press **Cancel**, disconnect from the account menu, reconnect, and try again.
 
-**"Transaction was rejected in your wallet."** The signature request was dismissed. Nothing happened on-chain and nothing was charged. Just retry.
+**I refused the request by mistake.** Nothing was sent. Start the action again.
 
-**"No transaction hash received."** The wallet didn't return a hash. Check the wallet's own transaction history **before retrying** — occasionally the transaction went through even though the app didn't hear about it.
+**"Hathor Wallet didn't return a transaction".** Check the wallet's own history **before retrying**; occasionally the transaction went through even though the app didn't hear about it.
 
-**A transaction has been pending for a long time.** The app polls every few seconds and will update on its own. Leave the tab open. The queue is saved in your browser, so a reload won't lose track of it.
+**A transaction is "Taking longer than usual".** The network hasn't put it in a block yet. You don't need to do anything; the app keeps checking and updates on its own, even after a reload.
 
-**A notification disappeared.** Notifications are stored per browser. Clearing site data, using a different browser, or switching devices starts the list fresh — this has no effect on anything on-chain.
+**An item says "Not tracked".** The page was reloaded while Hathor Wallet was asking. If you approved it, the change shows on the name's page once it confirms.
 
-## Editing a name
+**An item disappeared from Activity.** Activity is stored per browser and keeps recent results for 14 days. Clearing site data, using a different browser, switching devices or connecting another wallet shows a different list. None of this affects anything on-chain.
 
-**I don't see any edit buttons.** You're viewing the name as a **visitor**. Edit controls only appear for the owner or the manager of the name, and only while that wallet is connected. Check the [Ownership tab](ownership.md) to see which addresses hold those roles.
+## Managing a name
 
-**"Token must be deposited to change the manager."** The name's NFT has been withdrawn to a wallet. Deposit it back from the [Ownership tab](ownership.md) and the role fields unlock. Note that whoever deposits the token becomes the owner.
+**I don't see Manage or any edit buttons.** Your connected wallet isn't the name's owner or manager. Check **Owner** and **Manager** in the **Details** panel of the name's page.
 
-**I can change the manager but not the owner.** Reassigning ownership requires you to be the **current owner** _and_ the token to be deposited. Managers can only pass on the manager role.
+**Profile and Records are read-only in Manage mode.** You're the owner but not the manager, and only the manager can edit them. Make yourself manager under [Addresses](addresses.md#manager).
 
-**My avatar didn't appear after registering.** The avatar is a second transaction that runs once the registration confirms — if the tab was closed before it asked for a signature, it never ran. Set the avatar from the [Profile tab](profile.md); the name itself is unaffected.
+**"The name's token isn't deposited".** The token has been withdrawn to a wallet, so owner actions are paused. Deposit it back from the name's page or [Ownership](ownership.md). Whoever deposits it becomes the owner.
 
-**An avatar image doesn't load.** Images are served from blob storage, and deleting or replacing the `avatar_link` [record](records.md) removes the old file. Upload a new image from the Profile tab.
+**My avatar didn't appear after registering.** The avatar is a second signature, sent once the registration confirms. If you refused it or it expired, it shows as **Not sent**. Set the avatar from [Profile](profile.md); the name itself is unaffected.
 
-## Data looks stale
-
-**The dashboard doesn't show a change I just made.** The dashboard loads its list once, when the page opens. Reload it. [Domain pages](domain-page.md) refresh themselves when a transaction confirms.
-
-**A page shows an old avatar or primary name.** Avatar and primary-name lookups are cached in memory for the life of the page. Reload to clear it.
+**An avatar image doesn't load.** Images are served from blob storage, and replacing or deleting the avatar removes the old file. Upload a new image from Profile.
 
 ## Still stuck?
 
-Open the name's [Info tab](info.md) and copy the raw record — it's the fastest way to show the team exactly what the contract holds. Include the transaction hash from the notification centre if the problem involves a transaction.
+Open the name's page, expand **Raw contract data** at the bottom of **Details**, and copy it. It's the fastest way to show the team exactly what the contract holds. If the problem involves a transaction, include its hash from the panel or from Activity.

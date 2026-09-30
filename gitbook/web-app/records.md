@@ -1,49 +1,49 @@
 ---
-description: Publish on-chain key/value records alongside a name.
+description: Publish links and other on-chain key/value records alongside a name.
 icon: list
 ---
 
-# Records Tab
+# Records
 
-Records are free-form **key/value pairs stored on-chain** with your name. Use them for anything you want to publish alongside your identity — a website, social handles, a contact address, an app-specific setting.
+Records are **key/value pairs stored on-chain** with your name. Use them for anything you want to publish alongside your identity: your socials, a website, a contact address, an app-specific setting.
 
-![The Records tab, seen by the name's manager](../.gitbook/assets/domain-records.jpg)
+Anyone can read them in the **Links** panel of the name's [public page](domain-page.md#the-panels). The **manager** edits them in the **Records** section of [Manage mode](domain-page.md#manage-mode).
 
-Above, a custom `bio` record — the pencil and bin buttons and **Add new record** appear because the connected wallet manages this name. A visitor sees the same record without them.
-
-Two keys are special because the app itself reads them:
-
-| Key           | Used by                                                                           |
-| ------------- | --------------------------------------------------------------------------------- |
-| `avatar_link` | The avatar shown on the [Profile tab](profile.md), the dashboard, and the top bar |
-| `description` | The description on the [Profile tab](profile.md)                                  |
-
-They are otherwise normal records — you can edit or delete them here just like any other.
-
-## Viewing
-
-Anyone can read the records of any name. Each record shows its key as a label and its value in a read-only field. Values whose key contains `url` or `link` get an external-link icon.
-
-A name with no records reads _No custom records found for this domain._
+![The Records section in Manage mode](../.gitbook/assets/manage-records.jpg)
 
 ## Adding a record
 
-Available to the owner and the manager.
+1. Pick a type from the list: **X**, **GitHub**, **Telegram**, **Discord**, **Website**, **Email**, or **Custom key…**.
+2. Type the value. Handles and full links both work: `@thoth_id` and `https://x.com/thoth_id` are both fine for X.
+3. Click **Add record** and approve the transaction in Hathor Wallet.
 
-1. Click **Add new record**.
-2. Fill in the key and the value.
-3. **Save**, then approve the transaction in your wallet.
+The new record shows as **Pending** until it confirms.
+
+A custom key can use letters, numbers and underscores, up to 50 characters, for example `pgp_fingerprint`. Keys are case-sensitive, so `Website` and `website` are two different records; sticking to lowercase makes life easier for anything reading your profile.
 
 ## Editing and deleting
 
 Each row has two buttons:
 
-* **Edit** — turns the value into an input; **Save** submits the change.
-* **Delete** — removes the record.
+* **Edit** (the pencil) turns the value into an input. **Save** sends the change.
+* **Delete** (the bin) asks _Delete this record?_ in the row. Confirm with **Delete**.
 
-Both are single on-chain transactions. Editing a record only changes its value; to rename a key, delete the old record and add a new one.
+Each change is one wallet signature. Editing changes only the value; to rename a key, delete the record and add a new one. While a change is confirming, the row is locked.
 
-Deleting or replacing `avatar_link` also removes the stored image file, so a link you've shared elsewhere will stop working.
+## How links are shown
+
+On the public page, an X, GitHub or Telegram handle is turned into a link to that profile, a website gets `https://`, and an email opens the visitor's mail app. A value that's already a full link is used as it is. A Discord username has a copy button instead. Other keys appear under **Other records**.
+
+## Special keys
+
+Two keys are used by the app itself and are edited under [Profile](profile.md), not here:
+
+| Key           | Used for                                                                            |
+| ------------- | ----------------------------------------------------------------------------------- |
+| `avatar_link` | The avatar on the name's page, in My names, and in the top bar                      |
+| `description` | The bio                                                                             |
+
+They still count toward the record limit.
 
 ## Limits
 
@@ -51,13 +51,13 @@ These come from the nano contract, not the app:
 
 | Limit                     | Value                                 |
 | ------------------------- | ------------------------------------- |
-| Records per name          | **20**                                |
+| Records per name          | **20**, including avatar and bio      |
 | Key length                | 1–**50** characters                   |
 | Key characters            | letters, numbers and underscores only |
 | Value length              | 1–**200** characters                  |
 | Total size of all records | 10,000 bytes                          |
 
-Keys are case-sensitive, so `Website` and `website` are two different records. Sticking to lowercase keys makes life easier for anything reading your profile.
+The section header shows how many you've used, for example _3 of 20 records_.
 
 ## Reading records from code
 

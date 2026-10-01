@@ -15,6 +15,14 @@ The SDK is provided for **testing and integration**. Use it with a **local devel
 
 These guides walk you through the thoth.id SDK step by step, with practical examples to help you get started quickly.
 
+Install it from [npm](https://www.npmjs.com/package/thoth-id-sdk):
+
+```bash
+npm install thoth-id-sdk
+```
+
+The [Quickstart](getting-started/quickstart.md) also covers yarn, caching and private nodes.
+
 {% content-ref url="getting-started/quickstart.md" %}
 [quickstart.md](getting-started/quickstart.md)
 {% endcontent-ref %}

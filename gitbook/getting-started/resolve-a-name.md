@@ -13,6 +13,7 @@ import { ThothIdSDK } from "thoth-id-sdk";
 async function resolveName() {
   try {
     const sdk = new ThothIdSDK();
+    // Optional: collect the domain map now instead of on the first call
     await sdk.loadContractIds();
 
     const walletAddress = await sdk.resolveName("example.htr");
@@ -34,6 +35,7 @@ import { ThothIdSDK } from "thoth-id-sdk";
 
 async function main() {
     const sdk = new ThothIdSDK();
+    // Optional: collect the domain map now instead of on the first call
     await sdk.loadContractIds();
 
     const walletAddr = await sdk.resolveName("example.htr");

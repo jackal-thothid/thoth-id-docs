@@ -21,6 +21,7 @@ import { ThothIdSDK } from "thoth-id-sdk";
 async function getMaxProfileDataEntries() {
   try {
     const sdk = new ThothIdSDK();
+    // Optional: collect the domain map now instead of on the first call
     await sdk.loadContractIds();
 
     const maxEntries = await sdk.getMaxProfileDataEntries("htr");

@@ -22,6 +22,7 @@ import { ThothIdSDK } from "thoth-id-sdk";
 async function getFeeMultiplier() {
   try {
     const sdk = new ThothIdSDK();
+    // Optional: collect the domain map now instead of on the first call
     await sdk.loadContractIds();
 
     const multiplier = await sdk.getFeeMultiplier(5, "htr");

@@ -22,6 +22,7 @@ import { ThothIdSDK } from "thoth-id-sdk";
 async function checkNameOwnership() {
   try {
     const sdk = new ThothIdSDK();
+    // Optional: collect the domain map now instead of on the first call
     await sdk.loadContractIds();
 
     const isOwner = await sdk.checkNameOwnership("example.htr", "WALLET_ADDRESS");

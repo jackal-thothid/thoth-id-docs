@@ -11,7 +11,7 @@ icon: barcode-scan
 
 This method is primarily intended for **testing and development**.
 
-It allows you to force the SDK to use a specific nano contract, such as one you've deployed locally or on a testnet. When a contract ID is set via this method, the SDK will ignore the `contractApiUrl` and the domain suffix-based resolution provided by `loadContractIds()`.
+It allows you to force the SDK to use a specific nano contract, such as one you've deployed locally or on a testnet. When a contract ID is set via this method, the SDK ignores the name's domain suffix and the contract map collected by `loadContractIds()`, and sends every call to this contract.
 
 ## Parameters
 

@@ -13,12 +13,15 @@ icon: code
 
 The `opts` parameter is an object of type `ThothSDKOptions` with the following properties:
 
-| Property         | Type             | Description                                                                                                                                                                                                                        | Default                                                          |
-| ---------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `nodeUrl`        | `string`         | URL of the Hathor full-node to connect to.                                                                                                                                                                                         | `"https://node1.testnet.hathor.network/v1a/nano_contract/state"` |
-| `contractApiUrl` | `string`         | URL of the API that provides the contract ID map.                                                                                                                                                                                  | `"https://domains.thoth.id/contract-ids"`                        |
-| `contractId`     | `string \| null` | A specific contract ID to use for all calls. This is mainly for testing purposes, allowing developers to use a local or test contract by overriding the contract ID resolution that would normally come from the `contractApiUrl`. | `null`                                                           |
-| `timeoutMs`      | `number`         | The timeout in milliseconds for network requests to the Hathor node.                                                                                                                                                               | `15000`                                                          |
+| Property      | Type                                  | Description                                                                                                                                                                                         | Default                                                              |
+| ------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `nodeUrl`     | `string`                              | URL of the Hathor full-node to connect to. Either the `/v1a/nano_contract/state` endpoint or the bare node root works.                                                                              | `"https://node1.testnet.hathor.network/v1a/nano_contract/state"`     |
+| `contractIds` | `Record<string, string>`              | A `domain suffix -> contract ID` map you collected earlier, for example with [`exportContractIds()`](exportContractIds.md). Passing it skips discovery entirely.                                  | —                                                                    |
+| `contractId`  | `string \| null`                      | A specific contract ID to use for all calls, whatever the name's domain. Mainly for testing against a local or test contract.                                                                      | `null`                                                               |
+| `blueprintId` | `string`                              | ID of the ThothNamer blueprint. Every contract created from it is a domain registry, which is how the SDK discovers the map. Change it only to test against your own blueprint.                    | `"000000009108a3ab3c24297df5e33679177fb8a051c133bcad467a8a23bf0dd3"` |
+| `headers`     | `Record<string, string \| undefined>` | Headers sent with every request to the node, for example an API key for a private node. Entries whose value is `undefined` are left out. In a browser, the node must allow them through CORS. | —                                                                    |
+| `retries`     | `number`                              | How many times a request is retried after a `429`, `502`, `503` or `504`, a timeout or a dropped connection, with exponential backoff (1s, 2s, 4s, …). `0` disables retries.                        | `3`                                                                  |
+| `timeoutMs`   | `number`                              | The timeout in milliseconds for each request to the Hathor node.                                                                                                                                    | `15000`                                                              |
 
 ## Returns
 
@@ -29,13 +32,15 @@ The `opts` parameter is an object of type `ThothSDKOptions` with the following p
 ```typescript
 import { ThothIdSDK } from "thoth-id-sdk";
 
-// Connect to mainnet with default settings
+// Default settings: the public Hathor testnet node
 const sdk = new ThothIdSDK();
 
-// Or connect to a testnet/local environment with custom options
-const testnetSdk = new ThothIdSDK({
-  nodeUrl: "https://node1.testnet.hathor.network/v1a/nano_contract/state",
-  contractApiUrl: "http://localhost:3232/contract-ids", // Your custom contract API
+// Or a private node, with a previously saved contract map
+const customSdk = new ThothIdSDK({
+  nodeUrl: "https://node.testnet.dozer.finance/v1a/nano_contract/state",
+  headers: { "X-API-Key": process.env.NODE_API_KEY },
+  contractIds: JSON.parse(localStorage.getItem("thoth-contract-ids") ?? "{}"),
+  retries: 5,
   timeoutMs: 10000,
 });
 ```

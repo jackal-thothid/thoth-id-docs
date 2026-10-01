@@ -13,6 +13,7 @@ import { ThothIdSDK } from "thoth-id-sdk";
 async function checkAvailability() {
   try {
     const sdk = new ThothIdSDK();
+    // Optional: collect the domain map now instead of on the first call
     await sdk.loadContractIds();
 
     const isAvailable = await sdk.isNameAvailable("newname.htr");

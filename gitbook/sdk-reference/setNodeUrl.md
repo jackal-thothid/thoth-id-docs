@@ -5,6 +5,10 @@ icon: code
 
 # setNodeUrl
 
+## Description
+
+A different node may be on a different network, so changing the node also clears the cached contract map. The SDK collects it again from the new node on the next call.
+
 ## Parameters
 
 * `url` (string): The new Hathor full-node URL.

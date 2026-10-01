@@ -4,6 +4,10 @@ icon: code
 
 # callMultiple
 
+## Description
+
+Sends several view calls to one contract in a single request. If any of the calls fails, the whole promise is rejected. To get each call's own outcome instead, use [`callMultipleSettled`](callMultipleSettled.md).
+
 ## Parameters
 
 * `calls` (Array<{ method: string; params?: any\[] }>): An array of objects, where each object represents a call to be made. Each object should have a `method` property with the name of the method to call, and an optional `params` property with an array of parameters for that method.
@@ -21,6 +25,7 @@ import { ThothIdSDK } from "thoth-id-sdk";
 async function callMultiple() {
   try {
     const sdk = new ThothIdSDK();
+    // Optional: collect the domain map now instead of on the first call
     await sdk.loadContractIds();
 
     const results = await sdk.callMultiple([

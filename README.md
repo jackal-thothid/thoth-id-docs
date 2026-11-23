@@ -1,33 +1,8 @@
-# thoth.id Sdk
+# thoth.id Docs
 
-[![npm version](https://img.shields.io/npm/v/thoth-id-sdk.svg)](https://www.npmjs.com/package/thoth-id-sdk)
+Source of the thoth.id documentation, published with [GitBook](https://www.gitbook.com/). GitBook syncs the [`gitbook/`](gitbook) folder: its `.gitbook.yaml` sets the root, `README.md` is the home page and `SUMMARY.md` is the table of contents.
 
-The thoth.id Sdk provides a convenient way to interact with the thoth.id decentralized naming service on the Hathor Network. It allows you to manage human-readable names (e.g., `username.htr`) and their associated wallet addresses, simplifying decentralized identity and transactions.
+- **Web App** guides: [`gitbook/web-app/`](gitbook/web-app)
+- **SDK** guides and reference: [`gitbook/getting-started/`](gitbook/getting-started) and [`gitbook/sdk-reference/`](gitbook/sdk-reference)
 
-## Features
-
-*   Resolve thoth.id names to wallet addresses.
-*   Check name availability and status.
-*   Calculate registration and renewal fees.
-*   get name ownership and profile data.
-
-## Installation
-
-```bash
-npm install thoth-id-sdk
-```
-
-or
-
-```bash
-yarn add thoth-id-sdk
-```
-
-## Documentation
-
-For comprehensive guides, API reference, and detailed examples, please visit our official documentation:
-[thoth.id Sdk Documentation](https://docs.thoth.id) and see [thoth.id](https://testnet.thoth.id)
-
-## License
-
-This Sdk is released under the [MIT License](LICENSE).
+This repository holds documentation only. The SDK itself lives in [thoth-id-sdk](https://github.com/jackal-thothid/thoth-id-sdk) and is published on npm as [`thoth-id-sdk`](https://www.npmjs.com/package/thoth-id-sdk).

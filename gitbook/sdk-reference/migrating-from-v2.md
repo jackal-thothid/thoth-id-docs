@@ -56,14 +56,37 @@ Two things changed in the method itself: it no longer takes a `url` argument, an
 | [`network`](constructor.md) option, [`setNetwork()`](setNetwork.md) | Mainnet support. Testnet stays the default. *(v3.2)* |
 | [`blueprintIds`](constructor.md) option, [`setBlueprintIds()`](setBlueprintIds.md) | Discovery across every ThothNamer version. *(v3.2)* |
 | [`getBlockedDomains()`](getBlockedDomains.md) | Domains whose registry was upgraded to an untrusted blueprint are blocked instead of resolved. *(v3.2)* |
+| Mainnet by default | `new ThothIdSDK()` uses mainnet; pass `network: "testnet"` for testnet. *(v3.3)* |
 
 `setNodeUrl()` now also clears the cached map, because a different node may be on a different network.
 
 ## Upgrading to v3.2
 
-v3.2 adds mainnet and changes nothing for testnet code: `new ThothIdSDK()` still uses the public testnet node. Two things are worth checking:
+v3.2 adds mainnet and changes nothing for testnet code: in v3.2, `new ThothIdSDK()` still uses the public testnet node. (v3.3 makes mainnet the default; see below.) Two things are worth checking:
 
 * **Saved maps.** If your app will use more than one network, key the saved map by network, for example `thoth-contract-ids:mainnet`. A testnet map passed to a mainnet instance resolves against the wrong contracts.
 * **Blocked domains.** A domain whose first registry now runs a blueprint outside the trusted list throws instead of resolving. See [`getBlockedDomains()`](getBlockedDomains.md). This only affects registries upgraded to code that is not a ThothNamer release.
 
 `blueprintId` and `setBlueprintId()` keep working, as shorthand for a single-entry `blueprintIds`.
+
+## Upgrading to v3.3
+
+{% hint style="warning" %}
+**The default network is now mainnet.** In v3.3, `new ThothIdSDK()` connects to the public mainnet node instead of testnet. Nothing throws: code that relied on the default to reach testnet silently reads mainnet instead.
+{% endhint %}
+
+If your app uses testnet, pass the network explicitly everywhere you create the SDK:
+
+```typescript
+// v3.2: testnet was the default
+const sdk = new ThothIdSDK();
+
+// v3.3
+const sdk = new ThothIdSDK({ network: "testnet" });
+```
+
+Check these too:
+
+* **Saved maps.** A testnet map passed through `contractIds` without `network: "testnet"` is used against the mainnet node. Add the option wherever you seed a saved map.
+* **Private nodes.** `nodeUrl` only changes the node, not the network. A private testnet node needs `network: "testnet"` as well, or the SDK looks for the mainnet blueprints on it.
+* **Constants.** `DEFAULT_NODE_URL` and `DEFAULT_BLUEPRINT_ID` keep their testnet values and are deprecated. Use `TESTNET_NODE_URL` and `TESTNET_BLUEPRINT_IDS`, or `NETWORKS[DEFAULT_NETWORK]` for the current default.

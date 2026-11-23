@@ -42,14 +42,15 @@ You do not have to configure a registry. The `loadContractIds()` line is optiona
 
 ## Choose a network
 
-The SDK uses the **testnet** unless told otherwise. Pass `network: "mainnet"` to use the public mainnet node and the mainnet ThothNamer contracts:
+The SDK uses the **mainnet** unless told otherwise: the public mainnet node and the mainnet ThothNamer contracts. Pass `network: "testnet"` to use testnet:
 
 {% tabs %}
 {% tab title="Mainnet" %}
 ```typescript
 import { ThothIdSDK } from "thoth-id-sdk";
 
-const sdk = new ThothIdSDK({ network: "mainnet" });
+// Mainnet is the default, so no option is needed
+const sdk = new ThothIdSDK();
 
 await sdk.resolveName("jackal.htr");      // "H93A2s655jatS1zfdMF5pwf6E4s5FHnUmh"
 await sdk.checkNameStatus("jackal.htr");  // "active"
@@ -68,8 +69,7 @@ await sdk.getManagerPrimaryName("H93A2s655jatS1zfdMF5pwf6E4s5FHnUmh", "htr"); //
 ```typescript
 import { ThothIdSDK } from "thoth-id-sdk";
 
-// Testnet is the default, so no option is needed
-const sdk = new ThothIdSDK();
+const sdk = new ThothIdSDK({ network: "testnet" });
 
 await sdk.resolveName("jackal.htr");      // "WjcD1MGLi1TS8pH1JRcYzd9bJ1YPejVRtH"
 await sdk.calculateFee("abcde.htr");      // 1
@@ -104,7 +104,7 @@ Collecting the map takes a few requests to the node. Collect it once, save it, a
 ```typescript
 import { ThothIdSDK, Network } from "thoth-id-sdk";
 
-async function getSdk(network: Network = "testnet") {
+async function getSdk(network: Network = "mainnet") {
   const cacheKey = `thoth-contract-ids:${network}`;
   const cached = localStorage.getItem(cacheKey);
   if (cached) {
@@ -130,12 +130,13 @@ Pass `headers` to authenticate against a node that needs it. They are sent with 
 
 ```typescript
 const sdk = new ThothIdSDK({
+  network: "testnet",
   nodeUrl: "https://node.testnet.dozer.finance/v1a/nano_contract/state",
   headers: { "X-API-Key": process.env.NODE_API_KEY },
 });
 ```
 
-For a private **mainnet** node, also pass `network: "mainnet"`, so the SDK uses the mainnet ThothNamer blueprints. `nodeUrl` only changes the node.
+`nodeUrl` only changes the node, not the network. A private **testnet** node needs `network: "testnet"` too, or the SDK looks for the mainnet ThothNamer blueprints on it. A private mainnet node only needs `nodeUrl`.
 
 {% hint style="info" %}
 In a browser, custom headers trigger a CORS preflight, so the node must allow them.

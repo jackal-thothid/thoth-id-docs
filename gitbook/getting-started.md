@@ -10,7 +10,7 @@ icon: play
 {% hint style="warning" %}
 **Project status: testnet**
 
-The SDK is provided for **testing and integration**. It uses the **testnet** contracts by default; pass `network: "mainnet"` to read the **mainnet** contracts, or point it at a **local development environment**. See the project status on the home page for the current endpoints.
+The SDK is provided for **testing and integration**. It uses the **mainnet** contracts by default; pass `network: "testnet"` to use the **testnet** contracts, or point it at a **local development environment**. See the project status on the home page for the current endpoints.
 {% endhint %}
 
 These guides walk you through the thoth.id SDK step by step, with practical examples to help you get started quickly.

@@ -24,7 +24,7 @@ Use it to reach the **same network** through another node, such as a private one
 ```typescript
 import { ThothIdSDK } from "thoth-id-sdk";
 
-// Mainnet through a private node
-const sdk = new ThothIdSDK({ network: "mainnet" });
+// Mainnet (the default) through a private node
+const sdk = new ThothIdSDK();
 sdk.setNodeUrl("https://my-mainnet-node.example.com/v1a/nano_contract/state");
 ```

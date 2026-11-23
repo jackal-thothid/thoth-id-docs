@@ -1,8 +1,0 @@
-node_modules
-src
-tests
-*.log
-.gitignore
-gitbook
-.github
-.claude

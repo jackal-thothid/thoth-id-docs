@@ -7,7 +7,7 @@ icon: code
 
 ## Description
 
-Returns the domain suffixes in the cached contract map. It does not start a collection, so it returns an empty array until the map has been collected or seeded.
+Returns the domain suffixes in the cached contract map. It does not start a collection, so it returns an empty array until the map has been collected or seeded. [Blocked domains](getBlockedDomains.md) are not included.
 
 ## Parameters
 

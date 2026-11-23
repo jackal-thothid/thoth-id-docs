@@ -10,7 +10,7 @@ icon: play
 {% hint style="warning" %}
 **Project status: testnet**
 
-The SDK is provided for **testing and integration**. Use it with a **local development environment** or the **testnet contract**. See the project status on the home page for the current endpoints.
+The SDK is provided for **testing and integration**. It uses the **testnet** contracts by default; pass `network: "mainnet"` to read the **mainnet** contracts, or point it at a **local development environment**. See the project status on the home page for the current endpoints.
 {% endhint %}
 
 These guides walk you through the thoth.id SDK step by step, with practical examples to help you get started quickly.
@@ -21,7 +21,7 @@ Install it from [npm](https://www.npmjs.com/package/thoth-id-sdk):
 npm install thoth-id-sdk
 ```
 
-The [Quickstart](getting-started/quickstart.md) also covers yarn, caching and private nodes.
+The [Quickstart](getting-started/quickstart.md) also covers yarn, mainnet, caching and private nodes.
 
 {% content-ref url="getting-started/quickstart.md" %}
 [quickstart.md](getting-started/quickstart.md)

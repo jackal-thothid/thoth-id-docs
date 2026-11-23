@@ -9,7 +9,9 @@ icon: code
 
 This method is intended for **testing and development**, for example against a blueprint you deployed yourself.
 
-The SDK finds every domain by listing the contracts created from this blueprint. Changing it changes which domains exist, so it also clears the cached contract map. The SDK collects it again on the next call.
+It is shorthand for [`setBlueprintIds([id])`](setBlueprintIds.md): it **replaces** the whole list with this one blueprint. On mainnet that drops the other ThothNamer versions, so registries created from them are no longer found. To add a blueprint instead, use `setBlueprintIds()`.
+
+The SDK finds every domain by listing the contracts created from the blueprint. Changing it changes which domains exist, so it also clears the cached contract map. The SDK collects it again on the next call.
 
 ## Parameters
 

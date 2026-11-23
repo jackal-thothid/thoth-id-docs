@@ -53,5 +53,17 @@ Two things changed in the method itself: it no longer takes a `url` argument, an
 | [`headers`](constructor.md) option | Authenticate against a private node. *(v3.1)* |
 | [`retries`](constructor.md) option | Automatic retries with exponential backoff on rate limits and transient errors. *(v3.1)* |
 | [`callMultipleSettled()`](callMultipleSettled.md) | Batch view calls without one failure sinking the rest. *(v3.1)* |
+| [`network`](constructor.md) option, [`setNetwork()`](setNetwork.md) | Mainnet support. Testnet stays the default. *(v3.2)* |
+| [`blueprintIds`](constructor.md) option, [`setBlueprintIds()`](setBlueprintIds.md) | Discovery across every ThothNamer version. *(v3.2)* |
+| [`getBlockedDomains()`](getBlockedDomains.md) | Domains whose registry was upgraded to an untrusted blueprint are blocked instead of resolved. *(v3.2)* |
 
 `setNodeUrl()` now also clears the cached map, because a different node may be on a different network.
+
+## Upgrading to v3.2
+
+v3.2 adds mainnet and changes nothing for testnet code: `new ThothIdSDK()` still uses the public testnet node. Two things are worth checking:
+
+* **Saved maps.** If your app will use more than one network, key the saved map by network, for example `thoth-contract-ids:mainnet`. A testnet map passed to a mainnet instance resolves against the wrong contracts.
+* **Blocked domains.** A domain whose first registry now runs a blueprint outside the trusted list throws instead of resolving. See [`getBlockedDomains()`](getBlockedDomains.md). This only affects registries upgraded to code that is not a ThothNamer release.
+
+`blueprintId` and `setBlueprintId()` keep working, as shorthand for a single-entry `blueprintIds`.

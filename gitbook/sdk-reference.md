@@ -9,6 +9,8 @@ icon: code
 
 Start with a group, or jump to a method in the table below. Upgrading from v2? Read [Migrating from v2](sdk-reference/migrating-from-v2.md).
 
+The SDK works on testnet (the default) and mainnet: pass `{ network: "mainnet" }` to the [constructor](sdk-reference/constructor.md).
+
 Install the SDK from [npm](https://www.npmjs.com/package/thoth-id-sdk) with `npm install thoth-id-sdk`. See the [Quickstart](getting-started/quickstart.md) for setup.
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><strong>Object Management</strong></td><td>Create the SDK instance and point it at a node and contract.</td><td><a href="sdk-reference/object-management/">object-management</a></td><td><a href=".gitbook/assets/sdk-group-01.jpg">sdk-group-01.jpg</a></td></tr><tr><td><strong>Name Methods</strong></td><td>Resolve, validate and inspect names and their owners.</td><td><a href="sdk-reference/name-methods/">name-methods</a></td><td><a href=".gitbook/assets/sdk-group-02.jpg">sdk-group-02.jpg</a></td></tr><tr><td><strong>Contract &#x26; Fees</strong></td><td>Fees and multipliers, plus the contract's domain, managers and profile limits.</td><td><a href="sdk-reference/fee-information/">fee-information</a></td><td><a href=".gitbook/assets/sdk-group-contract-fees.jpg">sdk-group-contract-fees.jpg</a></td></tr></tbody></table>
@@ -30,9 +32,12 @@ The main class for interacting with the thoth.id nano contracts.
 | [`setContractIds`](sdk-reference/setContractIds.md)                     | Seeds the instance with a previously saved map.                                    |
 | [`getDomains`](sdk-reference/getDomains.md)                             | Lists the domain suffixes the instance knows about.                                |
 | [`getContractIdForDomain`](sdk-reference/getContractIdForDomain.md)     | Returns the cached contract ID of a domain suffix.                                 |
+| [`getBlockedDomains`](sdk-reference/getBlockedDomains.md)               | Lists the domains whose registry runs an untrusted blueprint.                      |
+| [`setNetwork`](sdk-reference/setNetwork.md)                             | Switches to another network's node and blueprints (testnet or mainnet).            |
 | [`setNodeUrl`](sdk-reference/setNodeUrl.md)                             | Sets the Hathor full-node URL.                                                     |
 | [`setContractId`](sdk-reference/setContractId.md)                       | Sets a specific contract ID to be used for all calls.                              |
-| [`setBlueprintId`](sdk-reference/setBlueprintId.md)                     | Sets the blueprint ID used to discover domain contracts.                           |
+| [`setBlueprintIds`](sdk-reference/setBlueprintIds.md)                   | Sets the blueprint IDs used to discover and trust domain contracts.                |
+| [`setBlueprintId`](sdk-reference/setBlueprintId.md)                     | Sets a single blueprint ID; shorthand for setBlueprintIds.                         |
 | [`isNameAvailable`](sdk-reference/isNameAvailable.md)                   | Checks if a name is available to be registered.                                    |
 | [`resolveName`](sdk-reference/resolveName.md)                           | Resolves a name to its associated wallet address.                                  |
 | [`getNameData`](sdk-reference/getNameData.md)                           | Retrieves the raw data associated with a name.                                     |

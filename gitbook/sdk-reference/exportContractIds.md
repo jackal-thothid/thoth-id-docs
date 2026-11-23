@@ -11,6 +11,8 @@ Returns a snapshot of the `domain suffix -> contract ID` map the instance has co
 
 It does not start a collection. If the map has not been collected yet, it returns an empty object, so call [`loadContractIds()`](loadContractIds.md) first.
 
+The map belongs to the instance's network, so save it under a key that includes the network. [Blocked domains](getBlockedDomains.md) are not part of it.
+
 ## Parameters
 
 None.
@@ -24,9 +26,9 @@ None.
 ```typescript
 import { ThothIdSDK } from "thoth-id-sdk";
 
-const sdk = new ThothIdSDK();
+const sdk = new ThothIdSDK({ network: "mainnet" });
 // Required here: exportContractIds() only reads the map, it never collects it
 await sdk.loadContractIds();
 
-localStorage.setItem("thoth-contract-ids", JSON.stringify(sdk.exportContractIds()));
+localStorage.setItem(`thoth-contract-ids:${sdk.network}`, JSON.stringify(sdk.exportContractIds()));
 ```

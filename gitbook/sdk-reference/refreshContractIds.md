@@ -9,6 +9,8 @@ icon: code
 
 The contract map is collected once per instance. If a new domain was created on chain after that, or you seeded the instance with a saved map that is now out of date, call `refreshContractIds()` to collect the map again.
 
+A saved map also skips the check for [blocked domains](getBlockedDomains.md). Refreshing it now and then catches a registry that was upgraded to an untrusted blueprint since you saved it.
+
 ## Parameters
 
 None.
@@ -22,8 +24,11 @@ None.
 ```typescript
 import { ThothIdSDK } from "thoth-id-sdk";
 
-const CACHE_KEY = "thoth-contract-ids";
-const sdk = new ThothIdSDK({ contractIds: JSON.parse(localStorage.getItem(CACHE_KEY) ?? "{}") });
+const CACHE_KEY = "thoth-contract-ids:mainnet";
+const sdk = new ThothIdSDK({
+  network: "mainnet",
+  contractIds: JSON.parse(localStorage.getItem(CACHE_KEY) ?? "{}"),
+});
 
 // A new domain went live since the map was saved
 const contractIds = await sdk.refreshContractIds();

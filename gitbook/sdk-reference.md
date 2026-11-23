@@ -9,7 +9,7 @@ icon: code
 
 Start with a group, or jump to a method in the table below. Upgrading from v2? Read [Migrating from v2](sdk-reference/migrating-from-v2.md).
 
-The SDK works on testnet (the default) and mainnet: pass `{ network: "mainnet" }` to the [constructor](sdk-reference/constructor.md).
+The SDK works on mainnet (the default) and testnet: pass `{ network: "testnet" }` to the [constructor](sdk-reference/constructor.md) for testnet.
 
 Install the SDK from [npm](https://www.npmjs.com/package/thoth-id-sdk) with `npm install thoth-id-sdk`. See the [Quickstart](getting-started/quickstart.md) for setup.
 

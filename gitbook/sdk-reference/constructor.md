@@ -15,7 +15,7 @@ The `opts` parameter is an object of type `ThothSDKOptions` with the following p
 
 | Property       | Type                                  | Description                                                                                                                                                                                         | Default                                                              |
 | -------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `network`      | `"testnet" \| "mainnet"`              | The Hathor network to use. It sets the default `nodeUrl` and `blueprintIds`; both can still be overridden. See [Networks](#networks). *(v3.2)*                                                    | `"testnet"`                                                          |
+| `network`      | `"mainnet" \| "testnet"`              | The Hathor network to use. It sets the default `nodeUrl` and `blueprintIds`; both can still be overridden. See [Networks](#networks). *(v3.2; default is mainnet since v3.3)*                    | `"mainnet"`                                                          |
 | `nodeUrl`      | `string`                              | URL of the Hathor full-node to connect to. Either the `/v1a/nano_contract/state` endpoint or the bare node root works.                                                                              | The network's public node                                            |
 | `contractIds` | `Record<string, string>`              | A `domain suffix -> contract ID` map you collected earlier, for example with [`exportContractIds()`](exportContractIds.md). Passing it skips discovery entirely.                                  | —                                                                    |
 | `contractId`  | `string \| null`                      | A specific contract ID to use for all calls, whatever the name's domain. Mainly for testing against a local or test contract.                                                                      | `null`                                                               |
@@ -31,10 +31,14 @@ It throws if `network` is not `"testnet"` or `"mainnet"`, or if `blueprintIds` i
 
 | Network             | Default node                   | Default blueprints                                                                                                                         |
 | ------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `testnet` (default) | `node1.testnet.hathor.network` | `000000009108a3ab3c24297df5e33679177fb8a051c133bcad467a8a23bf0dd3`                                                                         |
-| `mainnet`           | `node1.mainnet.hathor.network` | v1.0 `000000420ca7b70e522da7765c8c11ecc89a9e8a79d70eee49d5bdff4db03e92`, v1.1 `00000020324712abca4e3de7f25c05825808b9a3dd9aeb5b7cfe89a892203183` |
+| `mainnet` (default) | `node1.mainnet.hathor.network` | v1.0 `000000420ca7b70e522da7765c8c11ecc89a9e8a79d70eee49d5bdff4db03e92`, v1.1 `00000020324712abca4e3de7f25c05825808b9a3dd9aeb5b7cfe89a892203183` |
+| `testnet`           | `node1.testnet.hathor.network` | `000000009108a3ab3c24297df5e33679177fb8a051c133bcad467a8a23bf0dd3`                                                                         |
 
-These defaults are exported as `NETWORKS`, `MAINNET_NODE_URL`, `MAINNET_BLUEPRINT_IDS`, `DEFAULT_NODE_URL` and `DEFAULT_BLUEPRINT_ID`. To switch an existing instance, use [`setNetwork()`](setNetwork.md).
+These defaults are exported as `NETWORKS`, `DEFAULT_NETWORK`, `MAINNET_NODE_URL`, `MAINNET_BLUEPRINT_IDS`, `TESTNET_NODE_URL` and `TESTNET_BLUEPRINT_IDS`. To switch an existing instance, use [`setNetwork()`](setNetwork.md).
+
+{% hint style="warning" %}
+`DEFAULT_NODE_URL` and `DEFAULT_BLUEPRINT_ID` still hold the **testnet** values, from when testnet was the default. They are deprecated: use `TESTNET_NODE_URL` and `TESTNET_BLUEPRINT_IDS`, or `NETWORKS[DEFAULT_NETWORK]` for the current default.
+{% endhint %}
 
 ## Returns
 
@@ -45,14 +49,15 @@ These defaults are exported as `NETWORKS`, `MAINNET_NODE_URL`, `MAINNET_BLUEPRIN
 ```typescript
 import { ThothIdSDK } from "thoth-id-sdk";
 
-// Default settings: the public Hathor testnet node
+// Default settings: the public Hathor mainnet node and every mainnet ThothNamer blueprint
 const sdk = new ThothIdSDK();
 
-// Mainnet: the public mainnet node and every mainnet ThothNamer blueprint
-const mainnetSdk = new ThothIdSDK({ network: "mainnet" });
+// Testnet: the public testnet node and the testnet ThothNamer blueprint
+const testnetSdk = new ThothIdSDK({ network: "testnet" });
 
-// Or a private node, with a previously saved contract map
+// Or a private testnet node, with a previously saved contract map
 const customSdk = new ThothIdSDK({
+  network: "testnet",
   nodeUrl: "https://node.testnet.dozer.finance/v1a/nano_contract/state",
   headers: { "X-API-Key": process.env.NODE_API_KEY },
   contractIds: JSON.parse(localStorage.getItem("thoth-contract-ids:testnet") ?? "{}"),

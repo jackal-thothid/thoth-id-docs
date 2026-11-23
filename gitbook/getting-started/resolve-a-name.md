@@ -27,15 +27,15 @@ async function resolveName() {
 resolveName();
 ```
 
-On mainnet, pass the `network` option. Everything else is the same:
+The SDK uses mainnet by default. On testnet, pass the `network` option. Everything else is the same:
 
 ```typescript
 import { ThothIdSDK } from "thoth-id-sdk";
 
-const sdk = new ThothIdSDK({ network: "mainnet" });
+const sdk = new ThothIdSDK({ network: "testnet" });
 
 const walletAddr = await sdk.resolveName("jackal.htr");
-console.log(walletAddr); // "H93A2s655jatS1zfdMF5pwf6E4s5FHnUmh"
+console.log(walletAddr); // "WjcD1MGLi1TS8pH1JRcYzd9bJ1YPejVRtH"
 ```
 
 Or in a simple way:
